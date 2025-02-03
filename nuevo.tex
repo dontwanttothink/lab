@@ -1,0 +1,773 @@
+\documentclass[twocolumn]{article}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+\setdefaultlanguage{spanish}
+\numberwithin{table}{section}
+\definecolor{workblue}{HTML}{1377BA}
+\pgfplotsset{compat=1.18}
+
+\title{
+  El Movimiento de un Péndulo: Una Comparación con el Movimiento
+  Armónico Simple \\
+  {\large Colegio San Jorge de Inglaterra \\
+  Undécimo B}
+}
+\author{
+  María Alejandra Andrade Sánchez \and
+  Belcar Santiago Cuentas-Zavala Infante \and
+  Juan Esteban Guzmán Garzón \and
+  María Juliana Medina Higuera \and
+  Jerónimo Rodríguez Garzón \and
+  Juliana Rubiano Cabrera
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\newpage
+\tableofcontents
+
+\begin{abstract}
+  {\color{workblue} TODO\@: Adaptar al nuevo enfoque.}
+\end{abstract}
+
+\section{Introducción}
+
+{\color{workblue}TODO\@: Adaptar al nuevo enfoque.}
+
+\section{Marco teórico}
+
+{\color{workblue}TODO\@: ADD THIS IN THE RIGHT PLACE.}
+\begin{equation}
+  A = L\theta_{\max}
+\end{equation}
+
+El movimiento armónico simple es una oscilación en la que la fuerza restauradora
+es proporcional al desplazamiento. En el caso del péndulo, la fuerza
+restauradora es dada por:
+
+\begin{equation}\label{eq:restauradora}
+  F_{r} = -mg\sin{\theta}
+\end{equation}
+
+Donde $m$ es la masa del objeto, $g$ es la aceleración gravitacional y $\theta$
+es el ángulo de desplazamiento.
+
+Aunque la ecuación~\eqref{eq:restauradora} no es lineal, es muy cercana
+a una para pequeñas amplitudes.
+
+\begin{equation*}
+  \sin{\theta} \approx \theta \qquad\qquad \theta < 15^{\circ}
+\end{equation*}
+
+Esto permite obtener una fórmula lineal que aproxima la fuerza restauradora:
+
+\begin{equation}\label{eq:restauradora_aprox_por_alpha}
+  F_{r} \approx -mg\theta \qquad\qquad \theta < 15^{\circ}
+\end{equation}
+
+Por eso, se espera que el péndulo se comporte como un movimiento
+armónico simple para pequeñas amplitudes, como las utilizadas aquí.
+
+Comparando la ecuación~\eqref{eq:restauradora_aprox_por_alpha} con la
+ecuación general de la fuerza restauradora en un movimiento armónico
+simple, la fuerza restauradora es aproximadamente:
+
+\begin{equation}\label{eq:restauradora_mas}
+  F_{r} \approx -ks
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $k = \frac{mg}{l}$ y $l$ es la longitud de la cuerda.
+  \item $s = l\theta$, el desplazamiento a lo largo del
+    arco.\ \theta{} se mide en radianes.
+\end{itemize}
+
+El experimento se puede analizar a partir de esta simplificación
+porque se utilizaron únicamente ángulos menores a $15^{\circ}$, a
+excepción de la medida de $18^{\circ}$, durante la variación de la amplitud.
+
+\subsection{Periodo}
+
+El periodo de un objeto en movimiento armónico simple puede ser
+analizado a través de una comparación con el movimiento circular
+uniforme. En particular, se observa la proyección de un movimiento
+circular uniforme sobre el eje $x$.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    % Axis (dashed)
+    \draw[dashed, thick] (-2.5,0) -- (2.5,0);
+
+    % Circle
+    \draw[] (0,0) circle (2cm);
+
+    % Velocity
+    \definecolor{velocitygreen}{rgb}{0,0.5,0}
+    % tangent to the circle
+    \draw[->, >=stealth, velocitygreen, line width=1mm] (60:2cm) --
+    +({60+90}:2cm) node[above] {$v_{\max}$};
+    % parallel to the x-axis
+    \draw[->, >=stealth, velocitygreen, line width=1mm] (60:2cm) --
+    +(0:-sin{60} * 2cm) coordinate (vend) node[below] {$v$};
+    % dashed line perpendicular to the x-axis
+    \draw[dashed] (vend) -- +(90:cos{60} * 2cm) coordinate (v_angle);
+    % theta in velocity
+    \draw (v_angle) ++(0,-3mm) arc (270:{270+60}:3mm) node[midway,
+    below] {$\theta$};
+    % fix transparency because i'm lazy
+    \draw[->, >=stealth, velocitygreen, line width=1mm] (60:2cm) --
+    +({60+90}:2cm) node[above] {$v_{\max}$};
+
+    % Triangle
+    % TODO (maybe): add a white rectangle so that the square root node doesn't
+    % overlap the circle
+    \draw (0,0) -- node[left] {$A$} (60:2cm) -- +(0, -2 * sin{60})
+    node[right, midway] {$\sqrt{A^{2}-x^{2}}$};
+
+    \fill[color={rgb:red,200;green,50;blue,0}] (60:2cm) circle (1.5pt);
+    \draw (0:0.5cm) arc (0:60:0.5cm) node[midway, right] {$\theta$};
+
+    % Horizontal displacement
+    \draw[<->] (-0.5mm,-1mm) -- node[below] {$x$} +(0:2.17cm * cos{60});
+
+    % Frame of reference
+    \draw[->, >=stealth] (-2.5cm,-2.5cm) -- +(0,1cm) node[above] {$y$};
+    \draw[->, >=stealth] (-2.5cm,-2.5cm) -- +(1cm,0) node[right] {$x$};
+  \end{tikzpicture}
+  \caption{Vista de un movimiento circular uniforme desde arriba}\label{fig:mcu}
+\end{figure}
+
+En la figura~\ref{fig:mcu}, tanto la velocidad como la posición de la
+partícula en movimiento se describen con triángulos. Debido a que
+estos triángulos comparten, invariablemente, tanto el ángulo theta
+como un ángulo recto, ambos son similares. Este hecho se expresa en
+la ecuación~\eqref{eq:triángulos}.
+
+\begin{align}
+  \frac{v}{v_{\max}} = \frac{\sqrt{A^{2} - x^{2}}}{A} \nonumber &\\
+  v = v_{\max}\sqrt{1 - \frac{x^{2}}{A^{2}}} & \label{eq:triángulos}
+\end{align}
+
+Esta misma ecuación puede obtenerse a través de un análisis
+energético del movimiento armónico simple:
+
+\begin{align}
+  \frac{1}{2}mv^{2} + \frac{1}{2}kx^{2} &= \frac{1}{2}kA^{2} \nonumber \\
+  v^{2} &= \frac{k}{m}(A^{2} - x^{2}) \nonumber \\
+  v^{2} &= \frac{k}{m}A^{2}\left(1 - \frac{x^{2}}{A^{2}}\right)
+  \label{eq:velocidad_amplitud}
+\end{align}
+
+La velocidad máxima se obtiene cuando $x = 0$; es decir, en el punto de
+equilibrio. Por lo tanto,
+
+\begin{align}
+  \frac{1}{2}mv_{\max}^{2} + \frac{1}{2}k(0^{2}) &= \frac{1}{2}kA^{2}
+  \nonumber \\
+  v_{\max}^{2} &= \frac{k}{m}A^{2} \label{eq:velocidad_max}
+\end{align}
+
+Se pueden combinar las ecuaciones~\eqref{eq:velocidad_amplitud}
+y~\eqref{eq:velocidad_max}, dando como resultado:
+
+\begin{align}
+  v^{2} = v^{2}_{\max}\left(1 - \frac{x^{2}}{A^{2}}\right) \nonumber \\
+  v = \pm v_{\max}\sqrt{1 - \frac{x^{2}}{A^{2}}}
+\end{align}
+
+Debido a que la velocidad es igual en cada punto, la proyección en el
+eje $x$ de un movimiento circular uniforme es idéntica a un movimiento armónico
+simple. Aquello permite obtener el periodo de un movimiento armónico
+simple, porque es igual al tiempo que tardaría en dar un ciclo una
+partícula en el movimiento circular uniforme correspondiente.
+
+\begin{align}
+  T &= \frac{2\pi}{v_{\max}} \nonumber \\
+  T &= 2\pi\sqrt{\frac{m}{k}} \quad \text{Ya que $v_{\max} =
+  \sqrt{\frac{k}{m}}A$} \nonumber \\
+  T &= 2\pi\sqrt{\frac{l}{g}} \quad \text{Ya que $k =
+  \frac{mg}{l}$}\label{eq:periodo}
+\end{align}
+
+\subsection{Frecuencia}
+
+En el péndulo simple, la frecuencia se refiere al número de veces que el péndulo
+completa un ciclo en un segundo. Es igual a $\frac{1}{T}$.
+
+Combinando la fórmula del periodo según la aproximación basada en
+el movimiento armónico simple~\eqref{eq:periodo} en la ecuación de la
+frecuencia, se obtiene:
+
+\begin{equation}
+  f = \frac{1}{2\pi}\sqrt{\frac{g}{l}}
+\end{equation}
+
+\subsection{Velocidad}
+
+\subsubsection{Velocidad angular}
+
+La velocidad angular es el ángulo recorrido por un objeto por unidad
+de tiempo, y se mide en radianes por segundo.
+
+\begin{equation}
+  \omega = \frac{\theta}{t} \label{eq:velocidad_angular}
+\end{equation}
+
+También,
+
+\begin{equation}
+  \omega = \frac{2\pi}{T}
+\end{equation}
+
+Donde $T$ es el periodo.
+
+\subsubsection{Velocidad máxima}
+
+Como se mencionó anteriormente, la velocidad máxima según la
+aproximación con el movimiento armónico simple está dada por:
+
+\begin{equation}
+  v_{\max} = \sqrt{\frac{k}{m}}A \tag{\ref{eq:velocidad_max}}
+\end{equation}
+
+La velocidad varía a lo largo de la oscilación. Es máxima en el punto
+de equilibrio, donde toda la energía potencial se convierte en
+energía cinética, y es cero en los extremos, donde la energía
+cinética se transforma en energía potencial. Dado que la velocidad es
+un vector, se asigna un signo positivo al movimiento hacia un lado
+(en este caso, hacia la derecha) y negativo hacia el lado opuesto
+(hacia la izquierda), considerando el punto de equilibrio como el origen.
+
+\subsection{Energía}
+
+\subsubsection{Energía potencial}
+
+La energía potencial gravitacional del péndulo es máxima en los
+extremos de su movimiento, cuando alcanza su punto más alto, y mínima
+cuando se encuentra en el punto de equilibrio. Se define por la
+ecuación~\eqref{eq:potencial_gravitacional}.
+
+\begin{equation}
+  E_{p} = mgh \label{eq:potencial_gravitacional}
+\end{equation}
+
+\subsubsection{Energía cinética}
+
+La energía cinética del péndulo es máxima en el punto de equilibrio,
+cuando el péndulo pasa por la vertical, y mínima en los extremos de
+su movimiento. Se define por la ecuación~\eqref{eq:cinética}.
+
+\begin{equation}
+  E_{c} = \frac{1}{2}mv^{2} \label{eq:cinética}
+\end{equation}
+
+\subsubsection{Energía mecánica}
+
+La energía mecánica es la suma de la energía cinética y la energía
+potencial de un sistema. En el caso del péndulo, la energía mecánica
+se mantiene constante durante el movimiento, ya que la fricción es
+negligible y no hay pérdidas significativas de energía debido a
+fuerzas externas y no conservativas.
+
+\begin{align}
+  E_{m} &= E_{c} + E_{p} \nonumber \\
+  E_{m} &= \frac{1}{2}mv^{2}
+\end{align}
+
+\subsection{Funciones del tiempo}
+
+\subsubsection{Desplazamiento en función del tiempo}
+
+En la figura~\ref{fig:mcu}, se observa que:
+
+\begin{equation}
+  x = A\cos{\theta} \label{eq:desplazamiento_ángulo}
+\end{equation}
+
+Reescribiendo la ecuación~\eqref{eq:velocidad_angular}, obtenemos que:
+
+\begin{equation*}
+  \theta = \omega t
+\end{equation*}
+
+Sustituyendo este valor en la
+ecuación~\eqref{eq:desplazamiento_ángulo}, se obtiene:
+
+\begin{equation}
+  s(t) = A\cos{(\omega t)} \label{eq:desplazamiento_tiempo}
+\end{equation}
+
+Aquí, $s(t)$ representa el desplazamiento del objeto en un movimiento
+armónico simple después de un tiempo $t$ y donde $A$ es la amplitud;
+es decir, el máximo desplazamiento del objeto.
+
+Para obtener el ángulo recorrido por el objeto en un tiempo $t$, se
+puede escribir una nueva ecuación:
+
+\begin{equation}
+  \theta(t) = \theta_{\max}\cos(\omega t) \label{eq:ángulo_tiempo}
+\end{equation}
+
+\subsubsection{Velocidad en función del tiempo}
+
+Dado que la variación de $s$ con respecto al tiempo $t$ es la
+velocidad, la derivada de la ecuación de desplazamiento con respecto
+al tiempo~\eqref{eq:desplazamiento_tiempo} da la velocidad en función
+del tiempo. Esto se expresa como:
+
+\begin{align}
+  v(t) &= \frac{d}{dt} \left[s(t)\right] \nonumber \\
+  v(t) &= \frac{d}{dt} \left[A\cos{(\omega t)}\right] \nonumber \\
+  v(t) &= -A\omega\sin{(\omega t)}\label{eq:velocidad_tiempo}
+\end{align}
+
+\subsubsection{Aceleración en función del tiempo}
+
+Dado que la variación de la velocidad $v$ con respecto al tiempo $t$
+es la aceleración, la derivada de la velocidad con respecto al tiempo
+da la aceleración en función del tiempo. Esto se expresa como:
+
+\begin{align}
+  a(t) &= \frac{d^{2}}{dt^{2}} \left[s(t)\right] \nonumber \\
+  a(t) &= \frac{d}{dt} \left[v(t)\right] \nonumber \\
+  a(t) &= \frac{d}{dt} \left[-A\omega\sin{(\omega t)}\right] \nonumber \\
+  a(t) &= -A\omega^{2}\cos{(\omega t)}\label{eq:aceleración_tiempo}
+\end{align}
+
+\section{Formulación de hipótesis}
+
+Se plantean las siguientes hipótesis para este experimento:
+
+\begin{itemize}
+  \item Se espera que exista una correlación positiva entre la longitud
+    de la cuerda y el periodo.
+  \item Se espera que la variación de la amplitud del péndulo no tenga un
+    efecto significativo sobre el periodo.
+  \item Se espera que el periodo observado coincida con el esperado para el
+    movimiento armónico simple.
+  \item Se espera que la variación de la masa sea irrelevante al periodo
+    de oscilación del péndulo.
+\end{itemize}
+
+\section{Diseño experimental}
+
+Una varilla se fijó perpendicularmente a un soporte. Se ató un cuerda a
+la varilla, que a la vez se ató a una masa. El aparato se ilustra en la
+figura~\ref{fig:diseño}.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    % Mesa
+    \draw (0,0) rectangle (4cm, 3mm);
+    \draw (5mm, 0) rectangle ++(1mm, -8mm);
+    \draw ({4cm - 6mm}, 0) rectangle ++(1mm, -8mm);
+
+    % Soporte universal
+    \draw (2.5cm, 3mm) rectangle ++(1.2cm, 1mm) coordinate (S);
+    \draw (S) ++({-0.6cm - 0.75mm}, 0) rectangle ++(1.5mm, 2.5cm)
+    coordinate (T)
+    node[midway, left, xshift=-1mm]
+    {soporte};
+    \draw (T) ++(-3mm, -1mm) coordinate (U) rectangle ++(1cm, 0.5mm);
+    \fill[white] (S) ++({-0.6cm - 0.75mm}, 0) rectangle ++(1.5mm, 2.5cm);
+
+    % cuerda
+    \draw (U) ++(0.7cm, 0) -- ++({270+15}:2cm) coordinate (V)
+    node[midway, right]
+    {cuerda};
+
+    % Masa
+    \draw (V) ++(-1.25mm, 0) rectangle ++(2.5mm, -0.8mm) coordinate (W);
+    \draw (W) ++(0.5mm, 0) -- ++(-0.5mm - 2.5mm - 0.5mm, 0)
+    node[midway, below]
+    {masa};
+  \end{tikzpicture}
+  \caption{Diseño experimental}\label{fig:diseño}
+\end{figure}
+
+\subsection{Materiales necesarios}
+
+Se necesitan:
+
+\begin{itemize}
+  \item cuerda;
+  \item un cronómetro;
+  \item un soporte para el péndulo;
+  \item pesas de $0.05$\,kg, $0.10$\,kg, $0.20$\,kg, y $0.25$\,kg;
+  \item una regla;
+  \item un transportador;
+  \item una balanza;
+  \item y varillas.
+\end{itemize}
+
+\subsection{Variables y constantes}
+
+{\color{workblue}TODO\@: Robby quiere tablas para cada uno de los
+tres experimentos.}
+
+En el experimento, se mantienen constantes:
+
+\begin{itemize}
+  \item la aceleración gravitacional y
+  \item el material de la cuerda.
+\end{itemize}
+
+Para la prueba con masa variable, se mantienen constantes la longitud
+de la cuerda y la amplitud. Para la prueba con amplitud variable, se
+mantienen constantes la masa y la longitud de la cuerda. Y para la
+prueba con longitud de cuerda variable, se mantienen constantes la
+masa y la amplitud.
+
+Por otro lado, se miden y controlan las variables como se indica en el
+cuadro~\ref{fig:variables}.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Variable} & \textbf{Dep.} & \textbf{Med.} &\textbf{Natur.} \\
+    \midrule
+    \textbf{Masa}                 & $I$& $D$&\triangle\\
+    \textbf{Longitud de cuerda}   & $I$& $D$&\triangle\\
+    \textbf{Ángulo (amplitud)}    & $I$& $D$&\triangle\\
+    \textbf{Tiempo}               & $D$& $D$&\triangle\\
+    \bottomrule
+  \end{tabular}
+  \caption{Caracterización de las variables}\label{fig:variables}
+  \vspace{0.5em}
+  \begin{minipage}{\columnwidth}
+    \footnotesize
+    Las columnas abreviadas se refieren a (1) la dependencia o
+    independencia de las variables, (2) si se miden directamente o
+    indirectamente, y (3) si su naturaleza es cuantitativa o cualitativa.
+    \vspace{0.5em}
+
+    \textbf{Leyenda:} \\
+    \begin{tabular}{cl}
+      $\triangle$ & cuantitativa \\
+      $\square$   & cualitativa \emph{(En desuso.)}
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\section{Procedimiento}
+
+En todos los casos, se calcularon promedios de los datos que se
+midieron más de una vez. El periodo de oscilación se aproximó
+dividiendo entre diez el tiempo promedio transcurrido en cada configuración
+experimental.
+
+\subsection{Variación de la longitud del cuerda}
+
+\begin{enumerate}
+  \item Se midió 1\,m de cuerda con una regla.\label{it:proc1_inicio}
+  \item Se ató una masa de $0.05$\,kg a la cuerda.
+  \item Se liberó la masa a una amplitud de $15$ grados, medida con
+    el transportador, y simultáneamente se inició el
+    cronómetro.\label{it:proc1_liberación}
+  \item Después de diez oscilaciones, se pausó el cronómetro y se
+    registró el tiempo transcurrido.\label{it:proc1_registro}
+  \item Se repitieron los pasos~\ref{it:proc1_liberación}
+    y~\ref{it:proc1_registro} tres veces.\label{it:proc1_fin}
+  \item Se repitieron los pasos~\ref{it:proc1_inicio}
+    a~\ref{it:proc1_fin}, utilizando longitudes de cuerda de
+    $50$\,cm, $30$\,cm y $15$\,cm.
+\end{enumerate}
+
+\subsection{Variación de la amplitud}
+
+\begin{enumerate}
+  \item Se midieron 60\,cm de cuerda con una regla.\label{it:proc2_inicio}
+  \item Se ató una masa de $0.10$\,kg a la cuerda.
+  \item Se liberó la masa a una amplitud de $6$ grados, medida con
+    el transportador, y simultáneamente se inició el
+    cronómetro.
+  \item Después de diez oscilaciones, se pausó el cronómetro y se
+    registró el tiempo transcurrido.\label{it:proc2_registro}
+  \item Se repitieron los pasos~\ref{it:proc1_liberación}
+    y~\ref{it:proc2_registro} tres veces.\label{it:proc2_fin}
+  \item Se repitieron los pasos~\ref{it:proc2_inicio}
+    a~\ref{it:proc2_fin}, utilizando amplitudes de
+    $9$, $12$, $15$ y $18$ grados.
+\end{enumerate}
+
+\subsection{Variación de la masa}
+
+\begin{enumerate}
+  \item Se midieron 60\,cm de cuerda con una regla.\label{it:proc3_inicio}
+  \item Se ató una masa de $0.05$\,kg a la cuerda.
+  \item Se liberó la masa a una amplitud de $10$ grados, medida con
+    el transportador, y simultáneamente se inició el
+    cronómetro.
+  \item Después de diez oscilaciones, se pausó el cronómetro y se
+    registró el tiempo transcurrido.\label{it:proc3_registro}
+  \item Se repitieron los pasos~\ref{it:proc1_liberación}
+    y~\ref{it:proc3_registro} tres veces.\label{it:proc3_fin}
+  \item Se repitieron los pasos~\ref{it:proc3_inicio}
+    a~\ref{it:proc3_fin}, utilizando masas de
+    $0.10$\,kg, $0.15$\,kg, $0.20$\,kg y $0.25$\,kg.
+\end{enumerate}
+
+\newpage
+\onecolumn
+\section{Resultados}
+
+\begin{table}[ht]
+  \centering
+  \caption{Efecto de la longitud en el periodo}\label{tab:longitud_periodo}
+  \begin{tabular}{cccccc}
+    \toprule
+    Longitud $L$ (m) & \multicolumn{3}{c}{Tiempo para 10
+    oscilaciones (s)} & Tiempo promedio (s) & Periodo $T$ (s) \\
+    \cmidrule(lr){2-4}
+    & Medición 1 & Medición 2 & Medición 3 &  &  \\
+    \midrule
+    0.15 &  9.56 &  9.68 &  9.71 &  9.65 & 0.965 \\
+    0.30 & 12.39 & 12.69 & 12.98 & 12.68 & 1.269 \\
+    0.50 & 15.32 & 15.65 & 15.66 & 15.54 & 1.554 \\
+    1.00 & 20.78 & 20.76 & 20.91 & 20.82 & 2.082 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption{Efecto de la amplitud en el periodo}\label{tab:amplitud_periodo}
+  \begin{tabular}{cccccc}
+    \toprule
+    Amplitud $\theta$ (°) & \multicolumn{3}{c}{Tiempo para 10
+    oscilaciones (s)} & Tiempo promedio (s) & Periodo $T$ (s) \\
+    \cmidrule(lr){2-4}
+    & Medición 1 & Medición 2 & Medición 3 &  &  \\
+    \midrule
+    6   & 16.39 & 16.56 & 16.76 & 16.57 & 1.657 \\
+    9   & 16.41 & 16.95 & 16.69 & 16.68 & 1.668 \\
+    12  & 17.01 & 16.80 & 17.09 & 16.97 & 1.697 \\
+    15  & 16.57 & 16.72 & 17.00 & 16.76 & 1.676 \\
+    18  & 16.41 & 16.53 & 16.72 & 16.55 & 1.655 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \caption{Efecto de la masa en el periodo}\label{tab:masa_periodo}
+  \begin{tabular}{cccccc}
+    \toprule
+    Masa (kg) & \multicolumn{3}{c}{Tiempo para 10 oscilaciones
+    (s)} & Tiempo promedio (s) & Periodo $T$ (s) \\
+    \cmidrule(lr){2-4}
+    & Medición 1 & Medición 2 & Medición 3 &  &  \\
+    \midrule
+    0.05  & 16.52 & 16.5  & 16.78 & 16.60 & 1.660 \\
+    0.10  & 16.53 & 16.68 & 17.09 & 16.76 & 1.677 \\
+    0.15  & 16.68 & 16.70 & 17.00 & 16.79 & 1.679 \\
+    0.20  & 16.68 & 16.71 & 16.95 & 16.78 & 1.678 \\
+    0.25  & 16.91 & 16.77 & 16.74 & 16.81 & 1.681 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\twocolumn
+
+\subsection{Limitaciones}
+
+% todo message in blue
+\textcolor{workblue}{Se debe explicar el significado de los porcentajes de
+error.}
+
+Durante el experimento, se tomaron múltiples mediciones bajo las mismas
+condiciones. Si el experimento hubiera estado libre de errores, estas
+mediciones serían iguales. Sin embargo, los errores humanos e inexactitudes
+inevitables resultan en una ligera variación. Algunas fuentes de
+error posibles incluyen:
+
+\begin{itemize}
+  \item el efecto de rozamientos mínimos e imperceptibles sobre las
+    oscilaciones del péndulo,
+  \item longitudes mal medidas o inexactas,
+  \item mediciones de tiempo inexactas\footnote{Algunos cronómetros
+    empiezan a contar unas décimas de segundo después o antes.}
+  \item y mediciones de ángulo inexactas o ángulos mal medidos.
+\end{itemize}
+
+Se elaboraron los cuadros~\ref{tab:error_longitud}~a~\ref{tab:error_amplitud}
+para mostrar esta variación, que establece la existencia de errores e
+inexactitudes.
+
+El porcentaje de error está dado por la fórmula:
+
+\begin{equation}
+  \text{Error} = \frac{T_{\text{prom}} -
+  T_{\text{medido}}}{T_{\text{prom}}} \times 100
+\end{equation}
+
+Donde $T_{\text{prom}}$ es el periodo promedio y $T_{\text{medido}}$ es
+el periodo medido.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Longitud $L$ (m) & \multicolumn{3}{c}{\% de error para $10$
+    oscilaciones} \\
+    \cmidrule(lr){2-4}
+    & Med. 1 & Med. 2 & Med. 3  \\
+    \midrule
+    0.15 & 0.93 & 0.31 & 0.62 \\
+    0.30 & 2.63 & 0.06 & 2.28 \\
+    0.50 & 1.42 & 0.71 & 0.77 \\
+    1.00 & 0.19 & 0.29 & 0.43 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Errores en la medición durante la variación de la
+  longitud del cuerda}\label{tab:error_longitud}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Masa $m$ (kg) & \multicolumn{3}{c}{\% de error para $10$
+    oscilaciones} \\
+    \cmidrule(lr){2-4}
+    & Med. 1 & Med. 2 & Med. 3  \\
+    \midrule
+    0.05 & 0.48 & 0.60 & 1.08 \\
+    0.10 & 1.43 & 0.54 & 1.91 \\
+    0.15 & 0.68 & 0.56 & 1.23 \\
+    0.20 & 0.60 & 0.42 & 1.01 \\
+    0.25 & 0.59 & 0.24 & 0.42 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Errores en la medición durante la variación de la
+  masa de la pesa}\label{tab:error_masa}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Amplitud $\theta$ ($^{\circ}$) & \multicolumn{3}{c}{\% de
+      error para $10$
+    oscilaciones} \\
+    \cmidrule(lr){2-4}
+    & Med. 1 & Med. 2 & Med. 3  \\
+    \midrule
+    6  & 1.09 & 0.06 & 1.15 \\
+    9  & 1.64 & 1.60 & 0.04 \\
+    12 & 1.79 & 0.31 & 1.73 \\
+    15 & 1.13 & 0.24 & 1.43 \\
+    18 & 0.85 & 0.12 & 1.03 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Errores en la medición durante la variación de la
+  amplitud de liberación}\label{tab:error_amplitud}
+\end{table}
+
+\section{Interpretación de los resultados}
+
+\subsection{Variación de la longitud}
+
+\begin{table}
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    $L$ (m) & $T_{\text{m}}$ (s) &
+    $T_{\text{e}}$ (s) & \% de variación \\
+    \midrule
+    0.15 & 0.965 & 0.965 & 0.00 \\
+    0.30 & 1.269 & 1.269 & 0.00 \\
+    0.50 & 1.554 & 1.554 & 0.00 \\
+    1.00 & 2.082 & 2.082 & 0.00 \\
+    \bottomrule
+  \end{tabular}
+
+  \caption{Comparación entre los valores medidos y esperados para $T$
+    según el movimiento armónico simple, con porcentajes de
+  variación}\label{tab:comparación_longitud}
+
+  \vspace{0.5em}
+  \begin{minipage}{\columnwidth}
+    \footnotesize
+    $T_{\text{m}}$ se refiere al periodo medido y $T_{\text{e}}$ al
+    periodo esperado.
+  \end{minipage}
+\end{table}
+
+En la tabla~\ref{tab:comparación_longitud}, se comparan los valores medidos
+y esperados para el periodo $T$ en función de la longitud de la
+cuerda. El porcentaje de variación se calcula con la fórmula:
+
+\begin{equation}
+  \text{Variación} = \frac{T_{\text{m}} - T_{\text{e}}}{T_{\text{e}}} \times 100
+\end{equation}
+
+Donde $T_{e}$ es el periodo esperado y $T_{m}$ es el periodo medido.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Periodo $T$ (s)},
+        grid=both,
+        xscale=0.85,
+        legend style={at={({1/0.85},1.25)}},
+        xmin=0, xmax=1,
+        ymin=0, ymax=2.5,
+        domain=0:1,
+        samples=200,
+      ]
+
+      % Expected values
+      \addplot[red] {2*pi*sqrt(x/9.81)};
+      \addlegendentry{Periodo esperado};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(0.15, 0.965) (0.30, 1.269) (0.50, 1.554) (1.00, 2.082)};
+      \addlegendentry{Periodo medido};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Periodo $T$ medido y esperado para un movimiento armónico
+    simple de las mismas características
+    $\left(2\pi\sqrt{\frac{L}{g}}\right)$ en función de la longitud de
+  la cuerda $L$}\label{fig:periodo_mas}
+\end{figure}
+
+\subsection{Variación de la masa}
+
+\subsection{Variación de la amplitud}
+
+% TODO: Finish this section
+
+\subsection{Conclusiones}
+
+{\color{workblue} TODO\@: Adaptar al nuevo enfoque.}
+
+\renewcommand{\refname}{Bibliografía}
+\begin{thebibliography}{1}
+  \bibitem{}
+  Giancoli, D.\,C. (2014) \textit{Physics: Principles and
+  Applications}. Pearson Education, Inc.
+\end{thebibliography}
+
+\end{document}
