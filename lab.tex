@@ -1,0 +1,1462 @@
+\documentclass[twocolumn]{report}
+% \documentclass{report}
+\usepackage{polyglossia}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[pdfborder={0 0 0}]{hyperref}
+
+\setdefaultlanguage{spanish}
+\numberwithin{table}{section}
+\pgfplotsset{compat=1.18}
+
+\title{
+  El Movimiento de un Péndulo: Un Estudio Teórico y Experimental, con
+  Comparación con el Movimiento Armónico Simple \\
+  {\large Colegio San Jorge de Inglaterra \\
+  Undécimo B}
+}
+\author{
+  María Alejandra Andrade Sánchez \and
+  Belcar Santiago Cuentas-Zavala Infante \and
+  Juan Esteban Guzmán Garzón \and
+  María Juliana Medina Higuera \and
+  Jerónimo Rodríguez Garzón \and
+  Juliana Rubiano Cabrera
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\chapter{Reporte}
+
+\begin{abstract}
+  {\color{red} The abstract has to have information
+  about the mathematical modeling.}
+\end{abstract}
+
+\section{Introducción}
+
+En este informe de laboratorio, se buscó analizar el movimiento
+oscilatorio de un péndulo y las variables que influyen en su
+comportamiento. Esto se llevó a cabo midiendo el tiempo que tarda un
+péndulo en realizar diez oscilaciones, variando factores como la
+masa, la longitud de la cuerda y la amplitud del movimiento. Además,
+se pretende establecer relaciones matemáticas entre estas variables
+(masa, tiempo y longitud de la cuerda) y el periodo de oscilación del
+péndulo.
+
+Algunas preguntas que guiaron la investigación son: ¿Cómo
+afecta la longitud de la cuerda al periodo de oscilación del péndulo?
+¿Qué impacto tiene la masa colgante en el movimiento oscilatorio? ¿De
+qué manera influye la amplitud en la velocidad máxima del péndulo
+durante una oscilación?
+
+\section{Marco teórico}
+
+El objeto de nuestro estudio es un péndulo simple, compuesto por una masa
+suspendida al final de una cuerda. La cuerda se desplaza hasta una
+cierta amplitud o ángulo y luego se libera. La velocidad del objeto
+es un vector tangente a la trayectoria circular del péndulo y actúa
+en el eje $x$, definido paralelo a $mg\sin{\alpha}$ como es visible
+en la figura~\ref{fig:fuerzas}.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \def\weight{2cm}
+    \def\amplitude{35}
+
+    % Tension
+
+    \draw[->] (0,0) -- ({\weight * cot(90 + \amplitude)},2cm) node[near
+    end,right]{$F_{T}$};
+
+    % Weight and its components
+    \draw[->] (0,0) -- (270:\weight) node[near end,right]{$mg$};
+
+    \draw[->,dashed] (0,0) -- ({180 + \amplitude}:{\weight *
+    sin(\amplitude)})
+    node[pos=1,left,yshift=0mm]{$mg\sin{\alpha}$};
+
+    \draw[->,dashed] (0,0) -- ({270 + \amplitude}:{\weight *
+    cos(\amplitude)})
+    node[pos=1,right,yshift=0mm]
+    {$mg\cos{\alpha}$};
+
+    % Mass
+    \draw[fill=gray!30] (0,0) circle [radius=0.05cm];
+  \end{tikzpicture}
+  \caption{Diagrama de fuerzas del péndulo}\label{fig:fuerzas}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \def\weight{2cm}
+    \def\amplitude{35}
+
+    % Tension
+
+    \draw[->] (0,0) -- ({\weight * cot(90 + \amplitude)},2cm)
+    coordinate (A)
+    node[near end, right, text=gray, font=\tiny]
+    {$F_{T}$};
+
+    % First showcase of angle \alpha
+    \draw[dashed] (A) ++(0, -1.3mm) -- ++(0, -1cm);
+
+    \def\angleradius{5mm}
+
+    \draw (A) ++({cos(270) * \angleradius}, {sin(270) * \angleradius})
+    arc[start angle=270, end angle={270 + \amplitude}, radius=\angleradius]
+    node[pos=0.7, below]
+    {$\alpha$};
+
+    % Weight and its components
+    \draw[->] (0,0) -- (270:\weight)
+    node[pos=1,below,text=gray,font=\tiny]
+    {$mg$};
+
+    \draw[->,dashed] (0,0) -- ({180 + \amplitude}:{\weight *
+    sin(\amplitude)})
+    node[pos=0.5,left,yshift=1.4mm,text=gray,font=\tiny]
+    {$mg\sin{\alpha}$};
+
+    \draw[->,dashed] (0,0) -- ({270 + \amplitude}:{\weight *
+    cos(\amplitude)})
+    node[pos=0.5,right,yshift=1mm,text=gray,font=\tiny]
+    {$mg\cos{\alpha}$};
+
+    % Mass
+    \draw[fill=gray!30] (0,0) circle [radius=0.05cm];
+
+    % Second showcase of angle \alpha
+    \draw (0,0) ++({cos(270 * \angleradius)}, {sin(270) * \angleradius})
+    arc[start angle=270, end angle={270 + \amplitude}, radius=\angleradius]
+    node[pos=0.7, below]
+    {$\alpha$};
+  \end{tikzpicture}
+  \caption{Proyección del ángulo}
+\end{figure}
+
+La componente “tangencial” (u “horizontal” vista desde el marco de
+referencia establecido) del peso es la fuerza que genera el
+movimiento (velocidad tangencial) del péndulo, ya que es la única que
+actúa a lo largo de la trayectoria en la que se mueve. Si bien existe
+una componente vertical del peso, (denominada “componente radial”)
+esta no influye en el movimiento del péndulo porque únicamente
+mantiene la tensión en la cuerda, pero no influencia la velocidad
+tangencial de la masa.
+
+En un péndulo, la masa se encuentra en su punto más alto antes de ser
+liberada, donde tiene su máxima energía potencial gravitatoria. A
+medida que la masa comienza a descender, esa energía potencial se
+convierte en energía cinética. Se asume que los efectos de la
+resistencia del aire y otras fuerzas externas son despreciables.
+
+En el punto más bajo de la trayectoria, toda la energía potencial se
+ha transformado en cinética, lo que significa que la masa se mueve a
+su mayor velocidad.
+
+La tensión de la cuerda debe equilibrar o contrarrestar la componente
+radial del peso para que la masa no caiga al suelo. Además, la
+tensión es la fuerza centrípeta que genera la trayectoria circular de
+la masa. Esta fuerza siempre va dirigida hacia el punto de
+suspensión: el punto desde donde se encuentra colgada la cuerda.
+
+La velocidad angular~\omega{} se define como el ángulo recorrido por
+el objeto en un segundo, y se aproxima, cuando la amplitud~\alpha{} es
+pequeña, mediante la siguiente formula en términos de $g$, la
+aceleración gravitacional, y $l$, la longitud de la cuerda:
+
+\begin{equation}
+  \omega \approx \sqrt{\frac{g}{l}} \qquad\qquad \alpha < 15^{\circ}
+\end{equation}
+
+La frecuencia $f$ es la cantidad de oscilaciones que ocurren por
+segundo, y se relaciona con la velocidad angular \omega{} mediante la
+siguiente fórmula:
+
+\begin{equation}
+  \omega = 2 \pi f
+\end{equation}
+
+El periodo $T$ es el tiempo que tarda la masa en completar un ciclo,
+definido como un movimiento de ida y vuelta. Este se calcula
+mediante la siguiente ecuación:
+
+\begin{equation}
+  T \approx 2\pi\sqrt{\frac{l}{g}} \qquad\qquad \alpha \ll 15^{\circ}
+  \label{eq:periodo}
+\end{equation}
+
+La demostración de la ecuación~\eqref{eq:periodo} se basa en una
+breve manipulación algebraica:
+
+\begin{align*}
+  \omega &= 2\pi f \approx \sqrt{\frac{g}{l}} \\
+  f &\approx \frac{1}{2\pi}\sqrt{\frac{g}{l}} \\
+  T &= \frac{1}{f} \approx 2\pi\sqrt{\frac{l}{g}}
+\end{align*}
+
+Podemos concluir que el periodo es directamente proporcional a la raíz de la
+longitud de la cuerda, o, equivalentemente, que el cuadrado del periodo es
+proporcional a la longitud de la cuerda.
+
+\begin{align}
+  T &\propto \sqrt{l} \\
+  T^{2} &\propto l
+  \label{eq:periodo_proporcionalidad}
+\end{align}
+
+Según esta ecuación, el periodo del péndulo no depende de la masa del objeto que
+cuelga: únicamente de la longitud de la cuerda y de la gravedad.
+
+\section{Formulación de hipótesis}
+
+\begin{itemize}
+  \item Se espera que exista una correlación positiva entre la longitud
+    de la cuerda y el periodo.
+  \item Se espera que la variación de la amplitud del péndulo no tenga un
+    efecto significativo sobre el periodo.
+  \item Se espera que la variación de la masa sea irrelevante al periodo
+    de oscilación del péndulo.
+\end{itemize}
+
+\section{Diseño experimental}
+
+Una varilla se fijó perpendicularmente a un soporte. Se ató un cuerda a
+la varilla, que a la vez se ató a una masa. El aparato se ilustra en la
+figura~\ref{fig:diseño}.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    % Mesa
+    \draw (0,0) rectangle (4cm, 3mm);
+    \draw (5mm, 0) rectangle ++(1mm, -8mm);
+    \draw ({4cm - 6mm}, 0) rectangle ++(1mm, -8mm);
+
+    % Soporte universal
+    \draw (2.5cm, 3mm) rectangle ++(1.2cm, 1mm) coordinate (S);
+    \draw (S) ++({-0.6cm - 0.75mm}, 0) rectangle ++(1.5mm, 2.5cm)
+    coordinate (T)
+    node[midway, left, xshift=-1mm]
+    {soporte};
+    \draw (T) ++(-3mm, -1mm) coordinate (U) rectangle ++(1cm, 0.5mm);
+    \fill[white] (S) ++({-0.6cm - 0.75mm}, 0) rectangle ++(1.5mm, 2.5cm);
+
+    % cuerda
+    \draw (U) ++(0.7cm, 0) -- ++({270+15}:2cm) coordinate (V)
+    node[midway, right]
+    {cuerda};
+
+    % Masa
+    \draw (V) ++(-1.25mm, 0) rectangle ++(2.5mm, -0.8mm) coordinate (W);
+    \draw (W) ++(0.5mm, 0) -- ++(-0.5mm - 2.5mm - 0.5mm, 0)
+    node[midway, below]
+    {masa};
+  \end{tikzpicture}
+  \caption{Diseño experimental}\label{fig:diseño}
+\end{figure}
+
+\subsection{Materiales necesarios}
+
+Se necesitan:
+
+\begin{itemize}
+  \item cuerda;
+  \item un cronómetro;
+  \item un soporte para el péndulo;
+  \item pesas de $0.05$\,kg, $0.10$\,kg, $0.20$\,kg, y $0.25$\,kg;
+  \item una regla;
+  \item un transportador;
+  \item una balanza;
+  \item y varillas.
+\end{itemize}
+
+\subsection{Variables y constantes}
+
+{\color{red}Robby quiere tablas para cada uno de los
+tres experimentos.}
+
+En el experimento, se mantienen constantes:
+
+\begin{itemize}
+  \item la aceleración gravitacional y
+  \item el material de la cuerda.
+\end{itemize}
+
+Para la prueba con masa variable, se mantienen constantes la longitud
+de la cuerda y la amplitud. Para la prueba con amplitud variable, se
+mantienen constantes la masa y la longitud de la cuerda. Y para la
+prueba con longitud de cuerda variable, se mantienen constantes la
+masa y la amplitud.
+
+Por otro lado, se miden y controlan las variables como se indica en el
+cuadro~\ref{fig:variables}.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Variable} & \textbf{Dep.} & \textbf{Med.} &\textbf{Natur.} \\
+    \midrule
+    \textbf{Masa}                 & $I$& $D$&\triangle\\
+    \textbf{Longitud de cuerda}   & $I$& $D$&\triangle\\
+    \textbf{Ángulo (amplitud)}    & $I$& $D$&\triangle\\
+    \textbf{Tiempo}               & $D$& $D$&\triangle\\
+    \bottomrule
+  \end{tabular}
+  \caption{Caracterización de las variables}\label{fig:variables}
+  \vspace{0.5em}
+  \begin{minipage}{\columnwidth}
+    \footnotesize
+    Las columnas abreviadas se refieren a (1) la dependencia o
+    independencia de las variables, (2) si se miden directamente o
+    indirectamente, y (3) si su naturaleza es cuantitativa o cualitativa.
+    \vspace{0.5em}
+
+    \textbf{Leyenda:} \\
+    \begin{tabular}{cl}
+      $\triangle$ & cuantitativa \\
+      $\square$   & cualitativa \emph{(En desuso.)}
+    \end{tabular}
+  \end{minipage}
+\end{table}
+
+\section{Procedimiento}
+
+En todos los casos, se calcularon promedios de los datos que se
+midieron más de una vez. El periodo de oscilación se aproximó
+dividiendo entre diez el tiempo promedio transcurrido en cada configuración
+experimental.
+
+\subsection{Variación de la longitud del cuerda}
+
+\begin{enumerate}
+  \item Se midió 1\,m de cuerda con una regla.\label{it:proc1_inicio}
+  \item Se ató una masa de $0.05$\,kg a la cuerda.
+  \item Se liberó la masa a una amplitud de $15$ grados, medida con
+    el transportador, y simultáneamente se inició el
+    cronómetro.\label{it:proc1_liberación}
+  \item Después de diez oscilaciones, se pausó el cronómetro y se
+    registró el tiempo transcurrido.\label{it:proc1_registro}
+  \item Se repitieron los pasos~\ref{it:proc1_liberación}
+    y~\ref{it:proc1_registro} tres veces.\label{it:proc1_fin}
+  \item Se repitieron los pasos~\ref{it:proc1_inicio}
+    a~\ref{it:proc1_fin}, utilizando longitudes de cuerda de
+    $50$\,cm, $30$\,cm y $15$\,cm.
+\end{enumerate}
+
+\subsection{Variación de la amplitud}
+
+\begin{enumerate}
+  \item Se midieron 60\,cm de cuerda con una regla.\label{it:proc2_inicio}
+  \item Se ató una masa de $0.10$\,kg a la cuerda.
+  \item Se liberó la masa a una amplitud de $6$ grados, medida con
+    el transportador, y simultáneamente se inició el
+    cronómetro.
+  \item Después de diez oscilaciones, se pausó el cronómetro y se
+    registró el tiempo transcurrido.\label{it:proc2_registro}
+  \item Se repitieron los pasos~\ref{it:proc1_liberación}
+    y~\ref{it:proc2_registro} tres veces.\label{it:proc2_fin}
+  \item Se repitieron los pasos~\ref{it:proc2_inicio}
+    a~\ref{it:proc2_fin}, utilizando amplitudes de
+    $9$, $12$, $15$ y $18$ grados.
+\end{enumerate}
+
+\subsection{Variación de la masa}
+
+\begin{enumerate}
+  \item Se midieron 60\,cm de cuerda con una regla.\label{it:proc3_inicio}
+  \item Se ató una masa de $0.05$\,kg a la cuerda.
+  \item Se liberó la masa a una amplitud de $10$ grados, medida con
+    el transportador, y simultáneamente se inició el
+    cronómetro.
+  \item Después de diez oscilaciones, se pausó el cronómetro y se
+    registró el tiempo transcurrido.\label{it:proc3_registro}
+  \item Se repitieron los pasos~\ref{it:proc1_liberación}
+    y~\ref{it:proc3_registro} tres veces.\label{it:proc3_fin}
+  \item Se repitieron los pasos~\ref{it:proc3_inicio}
+    a~\ref{it:proc3_fin}, utilizando masas de
+    $0.10$\,kg, $0.15$\,kg, $0.20$\,kg y $0.25$\,kg.
+\end{enumerate}
+
+\newpage
+\onecolumn
+\section{Resultados}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccccc}
+    \toprule
+    Longitud $L$ (m) & \multicolumn{3}{c}{Tiempo para 10
+    oscilaciones (s)} & Tiempo promedio (s) & Periodo $T$ (s) \\
+    \cmidrule(lr){2-4}
+    & Medición 1 & Medición 2 & Medición 3 &  &  \\
+    \midrule
+    0.15 &  9.56 &  9.68 &  9.71 &  9.65 & 0.965 \\
+    0.30 & 12.39 & 12.69 & 12.98 & 12.68 & 1.269 \\
+    0.50 & 15.32 & 15.65 & 15.66 & 15.54 & 1.554 \\
+    1.00 & 20.78 & 20.76 & 20.91 & 20.82 & 2.082 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Efecto de la longitud en el periodo}\label{tab:longitud_periodo}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccccc}
+    \toprule
+    Amplitud $\theta$ (°) & \multicolumn{3}{c}{Tiempo para 10
+    oscilaciones (s)} & Tiempo promedio (s) & Periodo $T$ (s) \\
+    \cmidrule(lr){2-4}
+    & Medición 1 & Medición 2 & Medición 3 &  &  \\
+    \midrule
+    6   & 16.39 & 16.56 & 16.76 & 16.57 & 1.657 \\
+    9   & 16.41 & 16.95 & 16.69 & 16.68 & 1.668 \\
+    12  & 17.01 & 16.80 & 17.09 & 16.97 & 1.697 \\
+    15  & 16.57 & 16.72 & 17.00 & 16.76 & 1.676 \\
+    18  & 16.41 & 16.53 & 16.72 & 16.55 & 1.655 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Efecto de la amplitud en el periodo}\label{tab:amplitud_periodo}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccccc}
+    \toprule
+    Masa (kg) & \multicolumn{3}{c}{Tiempo para 10 oscilaciones
+    (s)} & Tiempo promedio (s) & Periodo $T$ (s) \\
+    \cmidrule(lr){2-4}
+    & Medición 1 & Medición 2 & Medición 3 &  &  \\
+    \midrule
+    0.05  & 16.52 & 16.5  & 16.78 & 16.60 & 1.660 \\
+    0.10  & 16.53 & 16.68 & 17.09 & 16.76 & 1.677 \\
+    0.15  & 16.68 & 16.70 & 17.00 & 16.79 & 1.679 \\
+    0.20  & 16.68 & 16.71 & 16.95 & 16.78 & 1.678 \\
+    0.25  & 16.91 & 16.77 & 16.74 & 16.81 & 1.681 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Efecto de la masa en el periodo}\label{tab:masa_periodo}
+\end{table}
+
+\twocolumn
+
+\subsection{Limitaciones}
+
+% todo message in blue
+{\color{red}Se debe explicar el significado de los porcentajes de
+error.}
+
+Durante el experimento, se tomaron múltiples mediciones bajo las mismas
+condiciones. Si el experimento hubiera estado libre de errores, estas
+mediciones serían iguales. Sin embargo, los errores humanos e inexactitudes
+inevitables resultan en una ligera variación. Algunas fuentes de
+error posibles incluyen:
+
+\begin{itemize}
+  \item el efecto de rozamientos mínimos e imperceptibles sobre las
+    oscilaciones del péndulo,
+  \item longitudes mal medidas o inexactas,
+  \item mediciones de tiempo inexactas\footnote{Algunos cronómetros
+    empiezan a contar unas décimas de segundo después o antes.}
+  \item y mediciones de ángulo inexactas o ángulos mal medidos.
+\end{itemize}
+
+Se elaboraron los cuadros~\ref{tab:error_longitud}~a~\ref{tab:error_amplitud}
+para mostrar esta variación, que establece la existencia de errores e
+inexactitudes.
+
+El porcentaje de error está dado por la fórmula:
+
+\begin{equation}
+  \text{Error} = \frac{\lvert T_{\text{prom}} -
+  T_{\text{medido}} \rvert}{T_{\text{prom}}} \times 100
+\end{equation}
+
+Donde $T_{\text{prom}}$ es el periodo promedio y $T_{\text{medido}}$ es
+el periodo medido.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Longitud $L$ (m) & \multicolumn{3}{c}{\% de error para $10$
+    oscilaciones} \\
+    \cmidrule(lr){2-4}
+    & Med. 1 & Med. 2 & Med. 3  \\
+    \midrule
+    0.15 & 0.93 & 0.31 & 0.62 \\
+    0.30 & 2.63 & 0.06 & 2.28 \\
+    0.50 & 1.42 & 0.71 & 0.77 \\
+    1.00 & 0.19 & 0.29 & 0.43 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Errores en la medición durante la variación de la
+  longitud del cuerda}\label{tab:error_longitud}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Masa $m$ (kg) & \multicolumn{3}{c}{\% de error para $10$
+    oscilaciones} \\
+    \cmidrule(lr){2-4}
+    & Med. 1 & Med. 2 & Med. 3  \\
+    \midrule
+    0.05 & 0.48 & 0.60 & 1.08 \\
+    0.10 & 1.43 & 0.54 & 1.91 \\
+    0.15 & 0.68 & 0.56 & 1.23 \\
+    0.20 & 0.60 & 0.42 & 1.01 \\
+    0.25 & 0.59 & 0.24 & 0.42 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Errores en la medición durante la variación de la
+  masa de la pesa}\label{tab:error_masa}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Amplitud $\theta$ ($^{\circ}$) & \multicolumn{3}{c}{\% de
+      error para $10$
+    oscilaciones} \\
+    \cmidrule(lr){2-4}
+    & Med. 1 & Med. 2 & Med. 3  \\
+    \midrule
+    6  & 1.09 & 0.06 & 1.15 \\
+    9  & 1.64 & 1.60 & 0.04 \\
+    12 & 1.79 & 0.31 & 1.73 \\
+    15 & 1.13 & 0.24 & 1.43 \\
+    18 & 0.85 & 0.12 & 1.03 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Errores en la medición durante la variación de la
+  amplitud de liberación}\label{tab:error_amplitud}
+\end{table}
+
+\section{Interpretación de los resultados}
+\subsection{Longitud y periodo}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $l$ (m)},
+        ylabel={Periodo $T$ (s)},
+        grid=both,
+        xscale=0.85,
+        legend style={at={({1/0.85},1.15)}},
+        xmin=0, xmax=1.1,
+        ymin=0, ymax=2.5,
+        domain=0:1.1,
+        samples=2,
+      ]
+
+      % Line of best fit
+      \addplot[red] {1.2691*x + 0.8487};
+      \addlegendentry{$y = 1.2691x + 0.8487$};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(0.15, 0.965) (0.30, 1.269) (0.50, 1.554)
+      (1.00, 2.082)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Longitud $l$ (metros) contra periodo $T$
+  (segundos)}\label{fig:longitud_periodo}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $l$ (m)},
+        ylabel={Cuadrado del periodo $T^{2}$ ($\text{s}^{2}$)},
+        grid=both,
+        xscale=0.85,
+        legend style={at={({1/0.85},1.15)}},
+        xmin=0, xmax=1.1,
+        ymin=0, ymax=4.5,
+        domain=0:1.1,
+        samples=2,
+      ]
+
+      % Line of best fit
+      \addplot[red] {3.9696*x + 0.3873};
+      \addlegendentry{$y = 3.9696x + 0.3873$};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(0.15, 0.93123) (0.3, 1.60952) (0.5, 2.41595)
+      (1.00, 4.33334)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Longitud $l$ (metros) contra el cuadrado del periodo $T^{2}$
+  (segundos cuadrados)}\label{fig:longitud_cuadrado_periodo}
+\end{figure}
+
+La gráfica~\ref{fig:longitud_periodo} es consistente con una
+correlación positiva entre la longitud de la cuerda y el periodo del
+péndulo: a medida que la longitud aumenta, el periodo también lo hace. Sin
+embargo, los puntos no se ajustan exactamente a una relación lineal.
+
+Según la teoría,\footnote{Vea la
+  ecuación~\eqref{eq:periodo_proporcionalidad} en la
+página~\pageref{eq:periodo_proporcionalidad}.} esto ocurre porque el periodo es
+proporcional a la raíz cuadrada de la longitud, no a la longitud
+directamente: la relación no es lineal. Por eso, en la
+gráfica~\ref{fig:longitud_cuadrado_periodo}, se representó el
+cuadrado del periodo frente a la longitud. En este caso, los puntos
+se ajustaron a una línea recta, demostrando la relación lineal entre
+el cuadrado del periodo y la longitud de la cuerda.
+
+Se cree que lo anterior se debe a que, al aumentar la longitud de la cuerda, la
+trayectoria que el objeto recorre también aumenta. El objeto toma más
+tiempo en recorrer una distancia mayor, lo que provoca que el periodo
+(el tiempo para una oscilación completa) se alargue.
+
+\subsubsection{Modelado matemático}
+
+La relación que se observa en la gráfica~\ref{fig:longitud_cuadrado_periodo}
+puede ser modelada mediante una regresión lineal. La ecuación resultante está
+dada dentro de la gráfica, y es la siguiente:
+
+\begin{equation}
+  T^{2} = 3.9696l + 0.3873
+\end{equation}
+
+Esto permite predecir el periodo de un péndulo simple a partir de la longitud de
+su cuerda, de una forma consistente con la teoría.
+
+La ecuación teórica~\eqref{eq:periodo} puede manipularse para obtener una forma
+similar a la ecuación de regresión:
+
+\begin{align*}
+  T &\approx 2\pi\sqrt{\frac{l}{g}} \\
+  T^{2} &\approx 4\pi^{2}\frac{l}{g} \\
+  T^{2} &\approx \frac{4\pi^{2}}{9.81\,\text{m/s$^{2}$}}l \\
+  T^{2} &\approx 4.03\,\text{s$^{2}$/m} \cdot l
+\end{align*}
+
+El coeficiente 4.03 de la ecuación teórica es muy cercano al 3.97 obtenido
+mediante la regresión lineal de los datos experimentales. Esta similitud
+entre la teoría y los resultados experimentales fortalece la validez de
+nuestras conclusiones.
+
+La pequeña diferencia entre ambos valores puede atribuirse a varios factores
+experimentales, como la resistencia del aire, pequeñas imperfecciones en la
+medición del tiempo y la longitud, o ligeras desviaciones de la verticalidad en
+el montaje del péndulo. Lo mismo aplica para la presencia de un término
+independiente (0.3873) en la ecuación experimental, que también sugiere la
+existencia de errores sistemáticos en las mediciones.
+
+\subsection{Amplitud y periodo}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Amplitud $\alpha$ ($^{\circ}$)},
+        ylabel={Periodo $T$ (s)},
+        grid=both,
+        scale=0.5,
+        legend style={at={(1,1.3)}},
+        grid=major,
+        xmin=0, xmax=20,
+        ymin=0, ymax=3,
+        domain=0:20,
+        samples=2,
+      ]
+
+      % Line of best fit
+      \addplot[red] {0.0002*x + 1.6655};
+      \addlegendentry{$y = 0.0002x + 1.6655$};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(6, 1.657) (9, 1.668) (12, 1.680)
+      (15, 1.676) (18, 1.655)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Amplitud $\alpha$ (grados) contra periodo $T$
+  (segundos)}\label{fig:amplitud_periodo}
+\end{figure}
+
+La gráfica~\ref{fig:amplitud_periodo} muestra la relación entre la
+amplitud y el periodo. La variación entre los puntos es mínima. Al
+añadir una línea de tendencia, la ecuación resultante muestra una
+pendiente de $0.0002$\,s, lo que indica una variación insignificante
+en los datos. De manera similar, la gráfica refleja que el cambio en
+el periodo al aumentar la amplitud es muy pequeño.
+
+La ausencia de una relación clara es consistente con la
+ecuación~\eqref{eq:periodo}, la cual asocia el periodo únicamente con la
+aceleración gravitacional y la longitud de la cuerda.
+
+Los resultados experimentales sugieren que el periodo de un péndulo simple es
+independiente de la amplitud de la oscilación. En la regresión lineal, se cree
+que el término independiente es consecuencia de los factores que se mantuvieron
+constantes durante el experimento, como la longitud de la cuerda y la
+aceleración gravitacional.
+
+\subsubsection{Energía potencial}
+
+Esta sección ofrece una posible explicación para los resultados
+observados, basándose en el análisis energético.
+
+La diferencia de la energía potencial del objeto entre pequeñas amplitudes
+es mínima, lo que puede ayudar a explicar que la amplitud no afecte de manera
+significativa el tiempo que el objeto tarda en completar una oscilación.
+
+Se asume que los efectos de la resistencia del aire y otras fuerzas
+externas son despreciables, por lo que se realiza el análisis
+basándose en la suposición de que toda la energía potencial gravitatoria
+se convierte en energía cinética.
+
+Debido a que una mayor energía cinética implica una mayor velocidad
+máxima en la oscilación, podría esperarse un menor periodo
+oscilatorio, incluso a pesar de la mayor longitud del arco a través
+del que el movimiento ocurre cuando se aumenta la amplitud. Sin
+embargo, las diferencias en energía potencial gravitatoria durante
+el experimento son mínimas.
+
+Se puede calcular la altura inicial $h$ de una pesa que se ata a un hilo de
+longitud $l$ y se libera con la amplitud $\alpha$ según la siguiente fórmula:
+
+\begin{align}
+  h &= l(\sin{(270^{\circ} + \alpha)} - \sin{270^{\circ}}) \nonumber \\
+  &= l(\sin{(270^{\circ} + \alpha)} + 1) \nonumber \\
+  &= l(-\cos{\alpha} + 1) \nonumber \\
+  &= l(1 - \cos{\alpha})
+\end{align}
+
+También se puede calcular la energía potencial gravitatoria de la pesa
+a partir de su masa $m$ y su altura inicial $h$:
+
+\begin{equation}
+  U = mgh
+\end{equation}
+
+Combinando ambas fórmulas, se puede estimar la energía potencial
+gravitatoria de la pesa al liberarse a las distintas amplitudes, como
+se ve en la figura~\ref{fig:energía_amplitud}.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        scale=0.5,
+        xlabel={Amplitud $\alpha$ ($^{\circ}$)},
+        ylabel={Energía potencial $T$ (J)},
+        grid=major,
+        xmin=0, xmax=20,
+        ymin=0, ymax=0.1,
+        xtick={6, 9, 12, 15, 18},
+        domain=0:20,
+        samples=200,
+      ]
+      \addplot[mark=none, color=blue]{0.5 * 9.81 * 0.3 * (1 - cos(x))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Energía potencial (julios) de una masa de $0.5$\,kg
+    liberada a un radio de $0.3$\,m contra amplitud de liberación $\alpha$
+  (grados)}\label{fig:energía_amplitud}
+\end{figure}
+
+Los cálculos muestran que la diferencia entre las energías cinéticas
+para variaciones en pequeños valores de amplitud es pequeña.
+
+\subsection{Masa y periodo}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        scale=0.5,
+        xlabel={Masa $m$ (kg)},
+        ylabel={Periodo $T$ (s)},
+        grid=major,
+        legend style={at={(1,1.3)}},
+        xmin=0, xmax=0.3,
+        ymin=0, ymax=2,
+        domain=0:0.3,
+        samples=2,
+      ]
+
+      % Line of best fit
+      \addplot[red] {0.0043*x + 1.6621};
+      \addlegendentry{$y = 0.0043x + 1.6621$};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {
+        (0.05, 1.660)
+        (0.10, 1.677)
+        (0.15, 1.679)
+        (0.20, 1.678)
+        (0.25, 1.681)
+      };
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Masa $m$ (kilogramos) contra periodo $T$
+  (segundos)}\label{fig:masa_periodo}
+\end{figure}
+
+La gráfica~\ref{fig:masa_periodo} muestra la relación entre la masa y
+el periodo. En la gráfica, se observa que la variación entre los
+puntos es mínima. La línea de tendencia tiene la ecuación $T =
+0.0043m + 1.6621$,
+donde el coeficiente $0.0043$\,s/kg representa el cambio en el periodo por cada
+kilogramo adicional de masa. Este valor es extremadamente pequeño, lo que indica
+que la masa tiene un efecto insignificante en el periodo.
+
+El término independiente $1.6621$\,s representa el periodo base del péndulo,
+determinado principalmente por la longitud de la cuerda que se mantuvo constante
+durante esta parte del experimento. Las pequeñas desviaciones de los puntos
+respecto a la línea de tendencia podrían atribuirse a errores experimentales.
+
+Según el análisis teórico, y como es discutido en
+la sección~\ref{sec:velocidad_tangencial}, el periodo es independiente de la
+masa. Esto también es consistente con la fórmula~\eqref{eq:periodo}.
+
+\section{Conclusiones}
+
+\chapter{Discusión de las preguntas orientadoras}
+
+\section{¿Qué sucede con la velocidad tangencial cuando
+aumenta la fuerza centrípeta?}\label{sec:velocidad_tangencial}
+
+La fuerza centrípeta en un movimiento circular se define por la
+siguiente formula:
+
+\begin{equation}
+  F_{c} = \frac{mv^{2}}{r}
+\end{equation}
+
+Podemos concluir que la fuerza centrípeta $F_{c}$ y el cuadrado de la
+velocidad del objeto en movimiento $v^{2}$ son proporcionales. Una
+mayor fuerza centrípeta, entonces, implica una mayor velocidad,
+siempre y cuando otros factores como la masa y la longitud (radio) se
+mantengan iguales.
+
+En el péndulo, la fuerza centrípeta asociada al movimiento circular
+proviene de la tensión de la cuerda. Sin embargo, la tensión en sí
+misma varía a lo largo de la trayectoria. En el punto más bajo del
+recorrido, la tensión es mayor porque no solo proporciona la fuerza
+necesaria para producir el movimiento circular, sino que también debe
+compensar totalmente el peso del péndulo, que en ese momento actúa en
+la dirección opuesta. Dado que la tensión es variable, la velocidad
+del péndulo también cambia. En el punto más bajo, tanto la tensión
+como la velocidad alcanzan sus máximos.
+
+\section{¿Cómo se puede aumentar la velocidad tangencial?}
+
+La velocidad máxima del péndulo ocurre cuando está en su punto más
+bajo y su energía gravitacional potencial se ha convertido totalmente
+en energía cinética.
+
+La altura del péndulo relativa a su punto más bajo es descrita por la fórmula:
+
+\begin{align}
+  h &= l(\cos(0) - \cos(\alpha)) \nonumber \\
+  &= l(1 - \cos(\alpha))
+\end{align}
+
+Donde $l$ se refiere a la longitud de la cuerda.
+
+Por eso, sabemos que:
+
+\begin{equation}
+  h \propto l
+\end{equation}
+
+Por otro lado, la velocidad del péndulo en su punto más bajo es dada por:
+
+\begin{align}
+  \frac{1}{2}m v^{2} &= mgh \\
+  v^{2} &= 2gh
+\end{align}
+
+Sustituyendo $h$,
+
+\begin{equation}
+  v^{2} = 2gl(1 - \cos(\alpha))
+\end{equation}
+
+Podemos concluir que:
+
+\begin{equation}
+  v^{2} \propto l
+\end{equation}
+
+También,
+
+\begin{equation}
+  v^{2} \propto 1 - \cos(\alpha)
+\end{equation}
+
+En otras palabras, aumentar el ángulo ($0 \leq \alpha \leq
+180^{\circ}$) o aumentar la longitud de la cuerda resulta en una
+mayor velocidad tangencial.
+
+La masa no tiene ningún efecto. Durante la manipulación algebraica,
+la masa $m$ se presenta como un factor en ambos lados de la ecuación,
+así que se obtienen fórmulas en términos de otras variables independientes.
+
+\section{¿Qué sucede con el periodo del péndulo si la cuerda
+encuentra un obstáculo?}
+
+En el sistema, la pesa se desplaza a lo largo de un arco cuyo origen
+se llama \emph{pivote}. Cuando no hay un obstáculo que interrumpa la
+oscilación, el pivote no cambia y es el punto desde el que está
+fijada la cuerda.
+
+Sin embargo, cuando la cuerda se encuentra con un obstáculo, el
+pivote se convierte en el punto donde ocurre el contacto. Eso
+significa que por una parte de la oscilación, la pesa sigue la
+trayectoria de un arco cuyo radio es menor. Una vez que el péndulo
+supera el obstáculo, se mueve otra vez desde su pivote original.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \draw (0,0) -- (-55:3.5cm) coordinate (A) -- ++(-115:1.3cm)
+    coordinate (C);
+    \node[left, xshift=-2mm] at (A) {nuevo pivote};
+
+    \path (A) ++(-0.67mm, 0) coordinate (B);
+    \fill (B) circle (0.75mm);
+
+    \def\masswidth{5mm};
+    \def\massheight{2mm};
+
+    \draw
+    (C) --
+    ++({-115 - 90}:{\masswidth/2}) --
+    ++({-115}:{\massheight}) coordinate (D) --
+    ++({-115 + 90}:\masswidth) --
+    ++({-115 + 90 * 2}:\massheight) --
+    ++({-115 - 90}:{\masswidth / 2}) node[right, xshift=3mm]{masa};
+
+    \draw
+    (D) --
+    ++({-115 - 90}:1.5mm) --
+    ++({-115 + 90}:{\masswidth + 1.5mm * 2});
+  \end{tikzpicture}
+  \caption{El sistema cuando la cuerda se encuentra con un objeto}
+\end{figure}
+
+Se asume que los efectos de la resistencia del aire y otras fuerzas
+externas son despreciables, por lo que no existe fuerza que disminuya
+la velocidad tangencial de la pesa además de la gravedad. Sin
+embargo, el recorrido total disminuye porque una parte del arco
+original es reemplazada por un arco más pequeño. De por sí, este
+hecho ofrece un fundamento fuerte para creer que un obstáculo
+disminuiría el periodo.
+
+Por otro lado, la fórmula~\eqref{eq:periodo} de la
+página~\pageref{eq:periodo} indica que el periodo de un péndulo
+depende de la longitud de la cuerda y la gravedad. En particular, el
+periodo y la longitud de la cuerda tienen una correlación positiva.
+
+La fórmula es válida para un cuerpo que se libera sin una velocidad
+inicial, pero es útil para nuestro análisis porque se cree que la velocidad
+otorgada a la pesa por su caída parcial hasta este punto tiene un
+efecto mínimo comparable al de la amplitud \alpha.
+
+Podemos afirmar con suficiente confianza que al reducirse la longitud
+efectiva de la cuerda, el periodo de la oscilación pequeña será mucho
+menor en comparación con el periodo que habría de no haber ningún obstáculo.
+
+En otras palabras, durante el tiempo en el que la pesa oscila con
+una longitud de cuerda menor, recorrería una parte de la trayectoria
+más rápido. Al final, todo el movimiento es más rápido de lo que
+sería si no hubiera encontrado el obstáculo.
+
+Por todo lo anterior, se concluye que el periodo disminuiría si la
+cuerda se encontrara con un obstáculo.
+
+\section{Suponga que el péndulo roza un líquido en cada
+oscilación. ¿Cómo se vería la gráfica del espacio contra el tiempo?}
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo},
+        ylabel={Posición horizontal},
+        grid=both,
+        xmin=0, xmax={360*4},
+        ymin=-1, ymax=1,
+        domain=0:{360*4},
+        xtick=\empty,
+        ytick={0},
+        samples=300,
+      ]
+      \addplot[red] {cos(x) * (360 * 4 - x)/(360 * 4)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{El comportamiento general esperado del
+  movimiento}\label{fig:líquido}
+\end{figure}
+
+\paragraph{Descenso inicial:} Al inicio, el péndulo
+parte de una altura determinada. Mientras baja hacia el punto más
+bajo de su trayectoria, donde $x=0$, su velocidad aumenta, lo que se
+refleja en una línea cada vez más empinada (una mayor pendiente)
+en la gráfica. La pendiente de la gráfica posición-tiempo equivale a la
+velocidad del péndulo.
+
+\paragraph{En el punto más bajo $x=0$ y al entrar en el líquido:} Al llegar al
+punto más bajo y entrar en contacto con el líquido, la fricción
+comienza a actuar, reduciendo la velocidad. Esto genera una
+disminución de la pendiente en la gráfica, ya que la velocidad se
+reduce debido a la resistencia del líquido.
+
+\paragraph{Ascenso posterior:} Al subir después de pasar por el líquido, el
+péndulo pierde velocidad, ya que su energía cinética se
+convierte en energía potencial y, además, cabe mencionar que la
+fricción del líquido ha reducido parte de su energía. La pendiente
+sigue disminuyendo hasta que, en el punto más alto de su trayectoria,
+la velocidad es cero, por lo que la pendiente también será cero. Sin
+embargo, debido a la pérdida de energía, la altura alcanzada en este
+punto es menor que la altura inicial, lo que se refleja en la gráfica
+con un valor menor que el de partida.
+
+\paragraph{Nuevo descenso hacia el punto más bajo nuevamente:} Al
+descender desde el nuevo punto más alto, que es menor al inicial, la
+velocidad del péndulo aumenta nuevamente. Esto se refleja en la
+gráfica como una pendiente creciente, ya que al moverse hacia el
+punto más bajo, la velocidad aumenta. Sin embargo, al pasar por el
+líquido nuevamente, la fricción hace que la velocidad disminuya, lo
+cual disminuye la pendiente de la gráfica. Al subir hacia el nuevo
+punto más alto, la energía cinética se vuelve a convertir en energía
+potencial, y la velocidad disminuye.
+
+Debido a la fricción, el péndulo pierde energía en cada oscilación,
+por lo que la altura que alcanza es cada vez menor. Esto se refleja
+en la gráfica con una amplitud decreciente, ya que el péndulo no
+regresa al punto de partida original. Cada nuevo punto mínimo o
+máximo en la gráfica de posición-tiempo es más bajo que el anterior.
+
+\chapter{Apéndice}
+
+\begin{abstract}
+  {\color{red} Adaptar al nuevo enfoque.}
+\end{abstract}
+
+\section{Introducción}
+
+{\color{red}Adaptar al nuevo enfoque.}
+
+\section{Marco teórico}
+
+{\color{red}ADD THIS IN THE RIGHT PLACE.}
+\begin{equation}
+  A = L\theta_{\max}
+\end{equation}
+
+El movimiento armónico simple es una oscilación en la que la fuerza restauradora
+es proporcional al desplazamiento. En el caso del péndulo, la fuerza
+restauradora es dada por:
+
+\begin{equation}\label{eq:restauradora}
+  F_{r} = -mg\sin{\theta}
+\end{equation}
+
+Donde $m$ es la masa del objeto, $g$ es la aceleración gravitacional y $\theta$
+es el ángulo de desplazamiento.
+
+Aunque la ecuación~\eqref{eq:restauradora} no es lineal, es muy cercana
+a una para pequeñas amplitudes.
+
+\begin{equation*}
+  \sin{\theta} \approx \theta \qquad\qquad \theta < 15^{\circ}
+\end{equation*}
+
+Esto permite obtener una fórmula lineal que aproxima la fuerza restauradora:
+
+\begin{equation}\label{eq:restauradora_aprox_por_alpha}
+  F_{r} \approx -mg\theta \qquad\qquad \theta < 15^{\circ}
+\end{equation}
+
+Por eso, se espera que el péndulo se comporte como un movimiento
+armónico simple para pequeñas amplitudes, como las utilizadas aquí.
+
+Comparando la ecuación~\eqref{eq:restauradora_aprox_por_alpha} con la
+ecuación general de la fuerza restauradora en un movimiento armónico
+simple, la fuerza restauradora es aproximadamente:
+
+\begin{equation}\label{eq:restauradora_mas}
+  F_{r} \approx -ks
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $k = \frac{mg}{l}$ y $l$ es la longitud de la cuerda.
+  \item $s = l\theta$, el desplazamiento a lo largo del
+    arco.\ \theta{} se mide en radianes.
+\end{itemize}
+
+El experimento se puede analizar a partir de esta simplificación
+porque se utilizaron únicamente ángulos menores a $15^{\circ}$, a
+excepción de la medida de $18^{\circ}$, durante la variación de la amplitud.
+
+\subsection{Periodo}
+
+El periodo de un objeto en movimiento armónico simple puede ser
+analizado a través de una comparación con el movimiento circular
+uniforme. En particular, se observa la proyección de un movimiento
+circular uniforme sobre el eje $x$.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    % Axis (dashed)
+    \draw[dashed, thick] (-2.5,0) -- (2.5,0);
+
+    % Circle
+    \draw[] (0,0) circle (2cm);
+
+    % Velocity
+    \definecolor{velocitygreen}{rgb}{0,0.5,0}
+    % tangent to the circle
+    \draw[->, >=stealth, velocitygreen, line width=1mm] (60:2cm) --
+    +({60+90}:2cm) node[above] {$v_{\max}$};
+    % parallel to the x-axis
+    \draw[->, >=stealth, velocitygreen, line width=1mm] (60:2cm) --
+    +(0:-sin{60} * 2cm) coordinate (vend) node[below] {$v$};
+    % dashed line perpendicular to the x-axis
+    \draw[dashed] (vend) -- +(90:cos{60} * 2cm) coordinate (v_angle);
+    % theta in velocity
+    \draw (v_angle) ++(0,-3mm) arc (270:{270+60}:3mm) node[midway,
+    below] {$\theta$};
+    % fix transparency because i'm lazy
+    \draw[->, >=stealth, velocitygreen, line width=1mm] (60:2cm) --
+    +({60+90}:2cm) node[above] {$v_{\max}$};
+
+    % Triangle
+    % TODO (maybe): add a white rectangle so that the square root node doesn't
+    % overlap the circle
+    \draw (0,0) -- node[left] {$A$} (60:2cm) -- +(0, -2 * sin{60})
+    node[right, midway] {$\sqrt{A^{2}-x^{2}}$};
+
+    \fill[color={rgb:red,200;green,50;blue,0}] (60:2cm) circle (1.5pt);
+    \draw (0:0.5cm) arc (0:60:0.5cm) node[midway, right] {$\theta$};
+
+    % Horizontal displacement
+    \draw[<->] (-0.5mm,-1mm) -- node[below] {$x$} +(0:2.17cm * cos{60});
+
+    % Frame of reference
+    \draw[->, >=stealth] (-2.5cm,-2.5cm) -- +(0,1cm) node[above] {$y$};
+    \draw[->, >=stealth] (-2.5cm,-2.5cm) -- +(1cm,0) node[right] {$x$};
+  \end{tikzpicture}
+  \caption{Vista de un movimiento circular uniforme desde arriba}\label{fig:mcu}
+\end{figure}
+
+En la figura~\ref{fig:mcu}, tanto la velocidad como la posición de la
+partícula en movimiento se describen con triángulos. Debido a que
+estos triángulos comparten, invariablemente, tanto el ángulo theta
+como un ángulo recto, ambos son similares. Este hecho se expresa en
+la ecuación~\eqref{eq:triángulos}.
+
+\begin{align}
+  \frac{v}{v_{\max}} = \frac{\sqrt{A^{2} - x^{2}}}{A} \nonumber &\\
+  v = v_{\max}\sqrt{1 - \frac{x^{2}}{A^{2}}} & \label{eq:triángulos}
+\end{align}
+
+Esta misma ecuación puede obtenerse a través de un análisis
+energético del movimiento armónico simple:
+
+\begin{align}
+  \frac{1}{2}mv^{2} + \frac{1}{2}kx^{2} &= \frac{1}{2}kA^{2} \nonumber \\
+  v^{2} &= \frac{k}{m}(A^{2} - x^{2}) \nonumber \\
+  v^{2} &= \frac{k}{m}A^{2}\left(1 - \frac{x^{2}}{A^{2}}\right)
+  \label{eq:velocidad_amplitud}
+\end{align}
+
+La velocidad máxima se obtiene cuando $x = 0$; es decir, en el punto de
+equilibrio. Por lo tanto,
+
+\begin{align}
+  \frac{1}{2}mv_{\max}^{2} + \frac{1}{2}k(0^{2}) &= \frac{1}{2}kA^{2}
+  \nonumber \\
+  v_{\max}^{2} &= \frac{k}{m}A^{2} \label{eq:velocidad_max}
+\end{align}
+
+Se pueden combinar las ecuaciones~\eqref{eq:velocidad_amplitud}
+y~\eqref{eq:velocidad_max}, dando como resultado:
+
+\begin{align}
+  v^{2} = v^{2}_{\max}\left(1 - \frac{x^{2}}{A^{2}}\right) \nonumber \\
+  v = \pm v_{\max}\sqrt{1 - \frac{x^{2}}{A^{2}}}
+\end{align}
+
+Debido a que la velocidad es igual en cada punto, la proyección en el
+eje $x$ de un movimiento circular uniforme es idéntica a un movimiento armónico
+simple. Aquello permite obtener el periodo de un movimiento armónico
+simple, porque es igual al tiempo que tardaría en dar un ciclo una
+partícula en el movimiento circular uniforme correspondiente.
+
+\begin{align}
+  T &= \frac{2\pi}{v_{\max}} \nonumber \\
+  T &= 2\pi\sqrt{\frac{m}{k}} \quad \text{Ya que $v_{\max} =
+  \sqrt{\frac{k}{m}}A$} \nonumber \\
+  T &= 2\pi\sqrt{\frac{l}{g}} \quad \text{Ya que $k =
+  \frac{mg}{l}$}\label{eq:mas_periodo}
+\end{align}
+
+\subsection{Frecuencia}
+
+En el péndulo simple, la frecuencia se refiere al número de veces que el péndulo
+completa un ciclo en un segundo. Es igual a $\frac{1}{T}$.
+
+Combinando la fórmula del periodo según la aproximación basada en
+el movimiento armónico simple~\eqref{eq:mas_periodo} en la ecuación de la
+frecuencia, se obtiene:
+
+\begin{equation}
+  f = \frac{1}{2\pi}\sqrt{\frac{g}{l}}
+\end{equation}
+
+\subsection{Velocidad}
+
+\subsubsection{Velocidad angular}
+
+La velocidad angular es el ángulo recorrido por un objeto por unidad
+de tiempo, y se mide en radianes por segundo.
+
+\begin{equation}
+  \omega = \frac{\theta}{t} \label{eq:velocidad_angular}
+\end{equation}
+
+También,
+
+\begin{equation}
+  \omega = \frac{2\pi}{T}
+\end{equation}
+
+Donde $T$ es el periodo.
+
+\subsubsection{Velocidad máxima}
+
+Como se mencionó anteriormente, la velocidad máxima según la
+aproximación con el movimiento armónico simple está dada por:
+
+\begin{equation}
+  v_{\max} = \sqrt{\frac{k}{m}}A \tag{\ref{eq:velocidad_max}}
+\end{equation}
+
+La velocidad varía a lo largo de la oscilación. Es máxima en el punto
+de equilibrio, donde toda la energía potencial se convierte en
+energía cinética, y es cero en los extremos, donde la energía
+cinética se transforma en energía potencial. Dado que la velocidad es
+un vector, se asigna un signo positivo al movimiento hacia un lado
+(en este caso, hacia la derecha) y negativo hacia el lado opuesto
+(hacia la izquierda), considerando el punto de equilibrio como el origen.
+
+\subsection{Energía}
+
+\subsubsection{Energía potencial}
+
+La energía potencial gravitacional del péndulo es máxima en los
+extremos de su movimiento, cuando alcanza su punto más alto, y mínima
+cuando se encuentra en el punto de equilibrio. Se define por la
+ecuación~\eqref{eq:potencial_gravitacional}.
+
+\begin{equation}
+  E_{p} = mgh \label{eq:potencial_gravitacional}
+\end{equation}
+
+\subsubsection{Energía cinética}
+
+La energía cinética del péndulo es máxima en el punto de equilibrio,
+cuando el péndulo pasa por la vertical, y mínima en los extremos de
+su movimiento. Se define por la ecuación~\eqref{eq:cinética}.
+
+\begin{equation}
+  E_{c} = \frac{1}{2}mv^{2} \label{eq:cinética}
+\end{equation}
+
+\subsubsection{Energía mecánica}
+
+La energía mecánica es la suma de la energía cinética y la energía
+potencial de un sistema. En el caso del péndulo, la energía mecánica
+se mantiene constante durante el movimiento, ya que la fricción es
+negligible y no hay pérdidas significativas de energía debido a
+fuerzas externas y no conservativas.
+
+\begin{align}
+  E_{m} &= E_{c} + E_{p} \nonumber \\
+  E_{m} &= \frac{1}{2}mv^{2}
+\end{align}
+
+\subsection{Funciones del tiempo}
+
+\subsubsection{Desplazamiento en función del tiempo}
+
+En la figura~\ref{fig:mcu}, se observa que:
+
+\begin{equation}
+  x = A\cos{\theta} \label{eq:desplazamiento_ángulo}
+\end{equation}
+
+Reescribiendo la ecuación~\eqref{eq:velocidad_angular}, obtenemos que:
+
+\begin{equation*}
+  \theta = \omega t
+\end{equation*}
+
+Sustituyendo este valor en la
+ecuación~\eqref{eq:desplazamiento_ángulo}, se obtiene:
+
+\begin{equation}
+  s(t) = A\cos{(\omega t)} \label{eq:desplazamiento_tiempo}
+\end{equation}
+
+Aquí, $s(t)$ representa el desplazamiento del objeto en un movimiento
+armónico simple después de un tiempo $t$ y donde $A$ es la amplitud;
+es decir, el máximo desplazamiento del objeto.
+
+Para obtener el ángulo recorrido por el objeto en un tiempo $t$, se
+puede escribir una nueva ecuación:
+
+\begin{equation}
+  \theta(t) = \theta_{\max}\cos(\omega t) \label{eq:ángulo_tiempo}
+\end{equation}
+
+\subsubsection{Velocidad en función del tiempo}
+
+Dado que la variación de $s$ con respecto al tiempo $t$ es la
+velocidad, la derivada de la ecuación de desplazamiento con respecto
+al tiempo~\eqref{eq:desplazamiento_tiempo} da la velocidad en función
+del tiempo. Esto se expresa como:
+
+\begin{align}
+  v(t) &= \frac{d}{dt} \left[s(t)\right] \nonumber \\
+  v(t) &= \frac{d}{dt} \left[A\cos{(\omega t)}\right] \nonumber \\
+  v(t) &= -A\omega\sin{(\omega t)}\label{eq:velocidad_tiempo}
+\end{align}
+
+\subsubsection{Aceleración en función del tiempo}
+
+Dado que la variación de la velocidad $v$ con respecto al tiempo $t$
+es la aceleración, la derivada de la velocidad con respecto al tiempo
+da la aceleración en función del tiempo. Esto se expresa como:
+
+\begin{align}
+  a(t) &= \frac{d^{2}}{dt^{2}} \left[s(t)\right] \nonumber \\
+  a(t) &= \frac{d}{dt} \left[v(t)\right] \nonumber \\
+  a(t) &= \frac{d}{dt} \left[-A\omega\sin{(\omega t)}\right] \nonumber \\
+  a(t) &= -A\omega^{2}\cos{(\omega t)}\label{eq:aceleración_tiempo}
+\end{align}
+
+\section{Interpretación de los resultados}
+
+\subsection{Variación de la longitud}
+
+\begin{table}
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    $L$ (m) & $T_{\text{m}}$ (s) &
+    $T_{\text{e}}$ (s) & \% de variación \\
+    \midrule
+    0.15 & 0.965 & 0.965 & 0.00 \\
+    0.30 & 1.269 & 1.269 & 0.00 \\
+    0.50 & 1.554 & 1.554 & 0.00 \\
+    1.00 & 2.082 & 2.082 & 0.00 \\
+    \bottomrule
+  \end{tabular}
+
+  \caption{Comparación entre los valores medidos y esperados para $T$
+    según el movimiento armónico simple, con porcentajes de
+  variación}\label{tab:comparación_longitud}
+
+  \vspace{0.5em}
+  \begin{minipage}{\columnwidth}
+    \footnotesize
+    $T_{\text{m}}$ se refiere al periodo medido y $T_{\text{e}}$ al
+    periodo esperado.
+  \end{minipage}
+\end{table}
+
+En la tabla~\ref{tab:comparación_longitud}, se comparan los valores medidos
+y esperados para el periodo $T$ en función de la longitud de la
+cuerda. El porcentaje de variación se calcula con la fórmula:
+
+\begin{equation}
+  \text{Variación} = \frac{T_{\text{m}} - T_{\text{e}}}{T_{\text{e}}} \times 100
+\end{equation}
+
+Donde $T_{e}$ es el periodo esperado y $T_{m}$ es el periodo medido.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Periodo $T$ (s)},
+        grid=both,
+        xscale=0.85,
+        legend style={at={({1/0.85},1.25)}},
+        xmin=0, xmax=1,
+        ymin=0, ymax=2.5,
+        domain=0:1,
+        samples=200,
+      ]
+
+      % Expected values
+      \addplot[red] {2*pi*sqrt(x/9.81)};
+      \addlegendentry{Periodo esperado};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(0.15, 0.965) (0.30, 1.269) (0.50, 1.554) (1.00, 2.082)};
+      \addlegendentry{Periodo medido};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Periodo $T$ medido y esperado para un movimiento armónico
+    simple de las mismas características
+    $\left(2\pi\sqrt{\frac{L}{g}}\right)$ en función de la longitud de
+  la cuerda $L$}\label{fig:periodo_mas}
+\end{figure}
+
+\subsection{Variación de la masa}
+
+\subsection{Variación de la amplitud}
+
+% TODO: Finish this section
+
+\section{Conclusiones}
+
+{\color{red} Adaptar al nuevo enfoque.}
+
+\renewcommand{\refname}{Bibliografía}
+\begin{thebibliography}{1}
+  \bibitem{}
+  Giancoli, D.\,C. (2014) \textit{Physics: Principles and
+  Applications}. Pearson Education, Inc.
+\end{thebibliography}
+
+\end{document}
