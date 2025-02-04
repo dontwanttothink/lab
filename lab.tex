@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{report}
+\documentclass[letterpaper]{report}
 \usepackage{polyglossia}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -11,6 +11,7 @@
 \usepackage{tikz}
 \usepackage{xcolor}
 \usepackage[pdfborder={0 0 0}]{hyperref}
+\usepackage[margin=1.2in]{geometry}
 
 \setdefaultlanguage{spanish}
 \numberwithin{table}{section}
@@ -36,7 +37,6 @@
 
 \maketitle
 
-\newpage
 \tableofcontents
 
 \chapter{Reporte}
@@ -292,49 +292,118 @@ Se necesitan:
 {\color{red}Robby quiere tablas para cada uno de los
 tres experimentos.}
 
-En el experimento, se mantienen constantes:
+\subsubsection{Variación de la longitud de la cuerda}
 
-\begin{itemize}
-  \item la aceleración gravitacional y
-  \item el material de la cuerda.
-\end{itemize}
+Se mantuvieron constantes algunas variables, como se indica en el
+cuadro~\ref{tab:longitud_constantes}. También se midieron y ajustaron
+sistemáticamente las variables como se indica en el
+cuadro~\ref{tab:longitud_variables}.
 
-Para la prueba con masa variable, se mantienen constantes la longitud
-de la cuerda y la amplitud. Para la prueba con amplitud variable, se
-mantienen constantes la masa y la longitud de la cuerda. Y para la
-prueba con longitud de cuerda variable, se mantienen constantes la
-masa y la amplitud.
-
-Por otro lado, se miden y controlan las variables como se indica en el
-cuadro~\ref{fig:variables}.
-
-\begin{table}[ht]
+\begin{table}[h!]
   \centering
   \begin{tabular}{lccc}
     \toprule
-    \textbf{Variable} & \textbf{Dep.} & \textbf{Med.} &\textbf{Natur.} \\
+    \textbf{Constante} & \textbf{Medición} & \textbf{Naturaleza} &
+    \textbf{Unidad}\\
     \midrule
-    \textbf{Masa}                 & $I$& $D$&\triangle\\
-    \textbf{Longitud de cuerda}   & $I$& $D$&\triangle\\
-    \textbf{Ángulo (amplitud)}    & $I$& $D$&\triangle\\
-    \textbf{Tiempo}               & $D$& $D$&\triangle\\
+    Masa de la pesa & Directa & Cuantitativa & kg \\
+    Amplitud & Directa & Cuantitativa & $^{\circ}$ \\
+    Aceleración gravitacional & — & Cuantitativa & m/s$^{2}$ \\
+    Material de la cuerda & — & Cualitativa & — \\
     \bottomrule
   \end{tabular}
-  \caption{Caracterización de las variables}\label{fig:variables}
-  \vspace{0.5em}
-  \begin{minipage}{\columnwidth}
-    \footnotesize
-    Las columnas abreviadas se refieren a (1) la dependencia o
-    independencia de las variables, (2) si se miden directamente o
-    indirectamente, y (3) si su naturaleza es cuantitativa o cualitativa.
-    \vspace{0.5em}
+  \caption{Constantes experimentales}\label{tab:longitud_constantes}
+\end{table}
 
-    \textbf{Leyenda:} \\
-    \begin{tabular}{cl}
-      $\triangle$ & cuantitativa \\
-      $\square$   & cualitativa \emph{(En desuso.)}
-    \end{tabular}
-  \end{minipage}
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Variable} & \textbf{Medición} & \textbf{Dependencia}
+    & \textbf{Naturaleza} & \textbf{Unidad} \\
+    \midrule
+    Longitud de la cuerda & Directa & Independiente & Cuantitativa & m\\
+    Masa & Directa & Dependiente  & Cuantitativa & kg\\
+    Tiempo & Directa & Dependiente & Cuantitativa & s\\
+    \bottomrule
+  \end{tabular}
+  \caption{Caracterización de las variables}\label{tab:longitud_variables}
+\end{table}
+
+\subsubsection{Variación de la amplitud}
+
+Se mantuvieron constantes algunas variables, como se indica en el
+cuadro~\ref{tab:amplitud_constantes}. También se midieron y ajustaron
+sistemáticamente las variables como se indica en el
+cuadro~\ref{tab:amplitud_variables}.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Constante} & \textbf{Medición} & \textbf{Naturaleza} &
+    \textbf{Unidad}\\
+    \midrule
+    Masa de la pesa & Directa & Cuantitativa & kg \\
+    Longitud de la cuerda & Directa & Cuantitativa & m \\
+    Aceleración gravitacional & — & Cuantitativa & m/s$^{2}$ \\
+    Material de la cuerda & — & Cualitativa & — \\
+    \bottomrule
+  \end{tabular}
+  \caption{Constantes experimentales}\label{tab:amplitud_constantes}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Variable} & \textbf{Medición} & \textbf{Dependencia}
+    & \textbf{Naturaleza} & \textbf{Unidad} \\
+    \midrule
+    Amplitud & Directa & Independiente & Cuantitativa & $^{\circ}$ \\
+    Periodo & Directa & Dependiente & Cuantitativa & s \\
+    Tiempo & Directa & Dependiente & Cuantitativa & s \\
+    \bottomrule
+  \end{tabular}
+  \caption{Caracterización de las variables}\label{tab:amplitud_variables}
+\end{table}
+
+\subsubsection{Variación de la masa}
+
+Se mantuvieron constantes algunas variables, como se indica en el
+cuadro~\ref{tab:masa_constantes}. También se midieron y ajustaron
+sistemáticamente las variables como se indica en el
+cuadro~\ref{tab:masa_variables}.
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Constante} & \textbf{Medición} & \textbf{Naturaleza} &
+    \textbf{Unidad}\\
+    \midrule
+    Longitud de la cuerda & Directa & Cuantitativa & m \\
+    Amplitud & Directa & Cuantitativa & $^{\circ}$ \\
+    Aceleración gravitacional & — & Cuantitativa & m/s$^{2}$ \\
+    Material de la cuerda & — & Cualitativa & — \\
+    \bottomrule
+  \end{tabular}
+  \caption{Constantes experimentales}\label{tab:masa_constantes}
+\end{table}
+
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Variable} & \textbf{Medición} & \textbf{Dependencia}
+    & \textbf{Naturaleza} & \textbf{Unidad} \\
+    \midrule
+    Masa de la pesa & Directa & Independiente & Cuantitativa & kg \\
+    Periodo & Directa & Dependiente & Cuantitativa & s \\
+    Tiempo & Directa & Dependiente & Cuantitativa & s \\
+    \bottomrule
+  \end{tabular}
+  \caption{Caracterización de las variables}\label{tab:masa_variables}
 \end{table}
 
 \section{Procedimiento}
@@ -396,9 +465,7 @@ experimental.
 \end{enumerate}
 
 \newpage
-\onecolumn
 \section{Resultados}
-
 \begin{table}[ht]
   \centering
   \begin{tabular}{cccccc}
@@ -454,8 +521,6 @@ experimental.
   \end{tabular}
   \caption{Efecto de la masa en el periodo}\label{tab:masa_periodo}
 \end{table}
-
-\twocolumn
 
 \subsection{Limitaciones}
 
@@ -558,10 +623,9 @@ el periodo medido.
         xlabel={Longitud $l$ (m)},
         ylabel={Periodo $T$ (s)},
         grid=both,
-        xscale=0.85,
-        legend style={at={({1/0.85},1.15)}},
+        scale=0.8,
         xmin=0, xmax=1.1,
-        ymin=0, ymax=2.5,
+        ymin=0, ymax=3,
         domain=0:1.1,
         samples=2,
       ]
@@ -576,7 +640,7 @@ el periodo medido.
       (1.00, 2.082)};
     \end{axis}
   \end{tikzpicture}
-  \caption{Longitud $l$ (metros) contra periodo $T$
+  \caption{Longitud $L$ (metros) contra periodo $T$
   (segundos)}\label{fig:longitud_periodo}
 \end{figure}
 
@@ -587,17 +651,16 @@ el periodo medido.
         xlabel={Longitud $l$ (m)},
         ylabel={Cuadrado del periodo $T^{2}$ ($\text{s}^{2}$)},
         grid=both,
-        xscale=0.85,
-        legend style={at={({1/0.85},1.15)}},
+        scale=0.8,
         xmin=0, xmax=1.1,
-        ymin=0, ymax=4.5,
+        ymin=0, ymax=6,
         domain=0:1.1,
         samples=2,
       ]
 
       % Line of best fit
       \addplot[red] {3.9696*x + 0.3873};
-      \addlegendentry{$y = 3.9696x + 0.3873$};
+      \addlegendentry{$T^{2} = 3.9696L + 0.3873$};
 
       % Data points
       \addplot[only marks, mark=o]
@@ -605,8 +668,9 @@ el periodo medido.
       (1.00, 4.33334)};
     \end{axis}
   \end{tikzpicture}
-  \caption{Longitud $l$ (metros) contra el cuadrado del periodo $T^{2}$
-  (segundos cuadrados)}\label{fig:longitud_cuadrado_periodo}
+  \caption{Comparación entre el cuadrado del periodo $T^{2}$
+    (segundos cuadrados) y la longitud $L$
+  (metros)}\label{fig:longitud_cuadrado_periodo}
 \end{figure}
 
 La gráfica~\ref{fig:longitud_periodo} es consistente con una
@@ -715,12 +779,11 @@ aceleración gravitacional.
 
 \subsubsection{Energía potencial}
 
-Esta sección ofrece una posible explicación para los resultados
-observados, basándose en el análisis energético.
-
-La diferencia de la energía potencial del objeto entre pequeñas amplitudes
-es mínima, lo que puede ayudar a explicar que la amplitud no afecte de manera
-significativa el tiempo que el objeto tarda en completar una oscilación.
+Un análisis energético ofrece una posible explicación para los resultados
+observados. La diferencia de la energía potencial del objeto entre
+pequeñas amplitudes es mínima, lo que puede ayudar a explicar que la
+amplitud no afecte de manera significativa el tiempo que el objeto
+tarda en completar una oscilación.
 
 Se asume que los efectos de la resistencia del aire y otras fuerzas
 externas son despreciables, por lo que se realiza el análisis
@@ -835,9 +898,30 @@ masa. Esto también es consistente con la fórmula~\eqref{eq:periodo}.
 
 \section{Conclusiones}
 
+{\color{red} Maybe we should redo this idk}
+
+El experimento permitió evaluar la validez de las hipótesis.
+En primer lugar, se planteó que existía una correlación positiva
+entre la longitud de la cuerda y la duración de las oscilaciones, lo
+cual fue confirmado. Esto se evidenció tanto en la gráfica de
+resultados, que mostró una pendiente que reflejaba dicha relación,
+como en la tendencia observada en los datos obtenidos. En segundo
+lugar, se planteó la hipótesis de que la variación de la masa es
+irrelevante para el período de oscilación del péndulo. Esta hipótesis
+fue comprobada mediante la gráfica de resultados, que mostró una
+pendiente muy mínima y cercana a 0, posiblemente debida a errores
+de medición y la influencia de factores como la resistencia al aire,
+lo que sugiere que no existe una relación significativa entre las dos
+variables. En tercer lugar, se hipotetizó que existe una correlación
+positiva entre la amplitud y la velocidad máxima del péndulo durante
+una oscilación. Sin embargo, dado a las pequeñas amplitudes que se
+tomaron para el experimento, y los resultados muy cercanos los unos a
+los otros, no se pudo establecer experimentalmente una relación
+directa entre ambas variables.
+
 \chapter{Discusión de las preguntas orientadoras}
 
-\section{¿Qué sucede con la velocidad tangencial cuando
+\section*{¿Qué sucede con la velocidad tangencial cuando
 aumenta la fuerza centrípeta?}\label{sec:velocidad_tangencial}
 
 La fuerza centrípeta en un movimiento circular se define por la
@@ -863,7 +947,7 @@ la dirección opuesta. Dado que la tensión es variable, la velocidad
 del péndulo también cambia. En el punto más bajo, tanto la tensión
 como la velocidad alcanzan sus máximos.
 
-\section{¿Cómo se puede aumentar la velocidad tangencial?}
+\section*{¿Cómo se puede aumentar la velocidad tangencial?}
 
 La velocidad máxima del péndulo ocurre cuando está en su punto más
 bajo y su energía gravitacional potencial se ha convertido totalmente
@@ -917,7 +1001,7 @@ La masa no tiene ningún efecto. Durante la manipulación algebraica,
 la masa $m$ se presenta como un factor en ambos lados de la ecuación,
 así que se obtienen fórmulas en términos de otras variables independientes.
 
-\section{¿Qué sucede con el periodo del péndulo si la cuerda
+\section*{¿Qué sucede con el periodo del péndulo si la cuerda
 encuentra un obstáculo?}
 
 En el sistema, la pesa se desplaza a lo largo de un arco cuyo origen
@@ -990,7 +1074,7 @@ sería si no hubiera encontrado el obstáculo.
 Por todo lo anterior, se concluye que el periodo disminuiría si la
 cuerda se encontrara con un obstáculo.
 
-\section{Suponga que el péndulo roza un líquido en cada
+\section*{Suponga que el péndulo roza un líquido en cada
 oscilación. ¿Cómo se vería la gráfica del espacio contra el tiempo?}
 
 \begin{figure}[ht]
@@ -1065,7 +1149,6 @@ máximo en la gráfica de posición-tiempo es más bajo que el anterior.
 
 \section{Marco teórico}
 
-{\color{red}ADD THIS IN THE RIGHT PLACE.}
 \begin{equation}
   A = L\theta_{\max}
 \end{equation}
@@ -1370,43 +1453,160 @@ da la aceleración en función del tiempo. Esto se expresa como:
 
 \subsection{Variación de la longitud}
 
-\begin{table}
+Véase la figura~\ref{fig:distancia_tiempo} en la
+página~\pageref{fig:distancia_tiempo}. En primer lugar, es
+importante señalar que cuando $t=0$, el valor de $y$
+(desplazamiento angular) para la curva roja (0.30\,m) es mayor que el de
+la curva negra (0.15\,m). Esto se debe a que, para la cuerda de mayor
+longitud, fue necesario desplazar la masa a una mayor distancia del
+punto de equilibrio para alcanzar el mismo ángulo inicial.
+
+El periodo de oscilación de un péndulo depende de la longitud de su
+cuerda, lo que se refleja en la distancia entre crestas en la gráfica
+de distancia-tiempo. La curva negra, correspondiente a una cuerda de
+0.15\,m, tiene un periodo más corto, evidenciado por una menor
+separación entre crestas sucesivas, lo que indica una oscilación más
+rápida. Esto ocurre porque la masa recorre una distancia horizontal
+más pequeña para alcanzar el mismo ángulo, permitiendo completar más
+oscilaciones en menos tiempo.
+
+En contraste, la curva roja, asociada a una cuerda de 0.30\,m, presenta
+una mayor separación entre crestas, lo que indica un periodo más
+largo y una oscilación más lenta. Esto se debe a que una cuerda más
+extensa requiere un mayor desplazamiento horizontal para alcanzar el
+mismo ángulo, aumentando el tiempo necesario para completar cada oscilación.
+
+Para ilustrar esta tendencia, en la
+figura~\ref{fig:distancia_tiempo_2} se comparó la curva
+roja, correspondiente a una cuerda de 0.30\,m, con la curva de un
+péndulo de 0.50\,m. Posteriormente, en la
+figura~\ref{fig:distancia_tiempo_3}, la curva de 0.50\,m
+se graficó junto con la de un péndulo de 1.00\,m.
+
+\begin{table}[h]
+  \centering
+  \footnotesize
+  \begin{tabular}{cccccccc}
+    \toprule
+    % FIXME: Amplitude in meters confusion
+    $L$ (m) & $T$ (s) & $A$ (m) & $\omega$ (rad/s) & $V_{\max}$ (s) &
+    $s(t)$ (m) & $v(t)$ (m/s) & $a(t)$ (m/s$^{2}$)\\
+    \midrule
+    0.15 & 0.965 & 0.039 & 6.512 & 0.256 & $0.039 \cos(6.512t)$
+    & $-0.256 \sin(6.512t)$ & $-1.665\cos(6.512t)$ \\
+    0.30 & 1.269 & 0.079 & 4.953 & 0.389 & $0.079 \cos(4.953t)$
+    & $-0.389 \sin(4.953t)$ & $-1.914\cos(4.953t)$ \\
+    0.50 & 1.554 & 0.131 & 4.043 & 0.529 & $0.131 \cos(4.043t)$
+    & $-0.529 \sin(4.043t)$ & $-2.140\cos(4.043t)$ \\
+    1.00 & 2.082 & 0.262 & 3.019 & 0.790 & $0.262 \cos(3.019t)$
+    & $-0.790 \sin(3.019t)$ & $-2.386\cos(3.019t)$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Valores esperados para varios parámetros del péndulo según el
+    movimiento armónico simple y en función de la longitud y periodo
+  (medidos)}\label{tab:longitud_valores_esperados}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Desplazamiento $s(t)$ (m)},
+        grid=both,
+        height = 6cm,
+        width = 10cm,
+        xmin=0, xmax=3,
+        ymin=-0.25, ymax=0.25,
+        domain=0:3,
+        samples=200,
+      ]
+      \addplot[black] {0.039 * cos(6.512 * x * 360/(2*pi))};
+      \addlegendentry{$L = 0.15$ m};
+      \addplot[red] {0.079 * cos(4.953 * x * 360/(2*pi))};
+      \addlegendentry{$L = 0.30$ m};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de distancia-tiempo para una longitud de cuerda de
+  0.15\,m y 0.30\,m}\label{fig:distancia_tiempo}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Desplazamiento $s(t)$ (m)},
+        grid=both,
+        height = 6cm,
+        width = 10cm,
+        xmin=0, xmax=3,
+        ymin=-0.25, ymax=0.25,
+        domain=0:3,
+        samples=200,
+      ]
+      \addplot[red] {0.079 * cos(4.953 * x * 360/(2*pi))};
+      \addlegendentry{$L = 0.30$ m};
+      \addplot[blue] {0.131 * cos(4.043 * x * 360/(2*pi))};
+      \addlegendentry{$L = 0.50$ m};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de distancia-tiempo para una longitud de cuerda de
+  0.30\,m y 0.50\,m}\label{fig:distancia_tiempo_2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Desplazamiento $s(t)$ (m)},
+        grid=both,
+        height = 6cm,
+        width = 10cm,
+        xmin=0, xmax=3,
+        ymin=-0.60, ymax=0.60,
+        domain=0:3,
+        samples=200,
+      ]
+      \addplot[blue] {0.131 * cos(4.043 * x * 360/(2*pi))};
+      \addlegendentry{$L = 0.50$ m};
+      \addplot[green!50!black] {0.262 * cos(3.019 * x * 360/(2*pi))};
+      \addlegendentry{$L = 1.00$ m};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de distancia-tiempo para una longitud de cuerda de
+  0.30\,m y 0.50\,m}\label{fig:distancia_tiempo_3}
+\end{figure}
+
+Los resultados muestran que, a medida que la longitud de la cuerda
+aumenta, el periodo de oscilación también se incrementa, mientras que
+la frecuencia disminuye. Esto confirma la relación entre la longitud
+de la cuerda y el periodo: cuanto más larga es la cuerda, más tiempo
+requiere el péndulo para completar una oscilación.
+
+\subsubsection{Los periodos medidos y calculados coinciden}
+
+\begin{table}[h]
   \centering
   \begin{tabular}{cccc}
     \toprule
-    $L$ (m) & $T_{\text{m}}$ (s) &
-    $T_{\text{e}}$ (s) & \% de variación \\
+    $L$ (m) & $T_{\text{medido}}$ (s) &
+    $T_{\text{esperado}}$ (s) & \% de variación \\
     \midrule
-    0.15 & 0.965 & 0.965 & 0.00 \\
-    0.30 & 1.269 & 1.269 & 0.00 \\
-    0.50 & 1.554 & 1.554 & 0.00 \\
-    1.00 & 2.082 & 2.082 & 0.00 \\
+    0.15 & 0.965 & 0.965 & 24.18 \\
+    0.30 & 1.269 & 1.269 & 15.44 \\
+    0.50 & 1.554 & 1.554 & 9.56 \\
+    1.00 & 2.082 & 2.082 & 3.75 \\
     \bottomrule
   \end{tabular}
 
   \caption{Comparación entre los valores medidos y esperados para $T$
     según el movimiento armónico simple, con porcentajes de
   variación}\label{tab:comparación_longitud}
-
-  \vspace{0.5em}
-  \begin{minipage}{\columnwidth}
-    \footnotesize
-    $T_{\text{m}}$ se refiere al periodo medido y $T_{\text{e}}$ al
-    periodo esperado.
-  \end{minipage}
 \end{table}
 
-En la tabla~\ref{tab:comparación_longitud}, se comparan los valores medidos
-y esperados para el periodo $T$ en función de la longitud de la
-cuerda. El porcentaje de variación se calcula con la fórmula:
-
-\begin{equation}
-  \text{Variación} = \frac{T_{\text{m}} - T_{\text{e}}}{T_{\text{e}}} \times 100
-\end{equation}
-
-Donde $T_{e}$ es el periodo esperado y $T_{m}$ es el periodo medido.
-
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \begin{tikzpicture}
     \begin{axis}[
@@ -1437,7 +1637,102 @@ Donde $T_{e}$ es el periodo esperado y $T_{m}$ es el periodo medido.
   la cuerda $L$}\label{fig:periodo_mas}
 \end{figure}
 
+Otra comparación relevante es entre el periodo medido en el
+experimento y el calculado mediante la fórmula del periodo para el
+movimiento armónico simple (fórmula {\color{red} TODO}). En la
+tabla~\ref{tab:comparación_longitud}, así como la
+figura~\ref{fig:periodo_mas} se representan ambos valores en
+función de la longitud de la cuerda.
+
+Se han incluido porcentajes de variación. Estos se calculan con la fórmula:
+
+\begin{equation}
+  \text{Variación} = \frac{\lvert T_{\text{m}} -
+  T_{\text{e}} \rvert}{T_{\text{e}}} \times 100
+\end{equation}
+
+Donde $T_{e}$ es el periodo esperado y $T_{m}$ es el periodo medido.
+
+Como se observa, los resultados experimentales y teóricos son muy
+similares, lo que se refleja en las pendientes de las curvas
+{\color{red}TODO} y {\color{red}TODO},
+las cuales prácticamente coinciden. Esta correspondencia indica que
+la relación entre el periodo y la longitud de la cuerda siguen
+cercanamente al modelo teórico, lo cual demuestra el movimiento
+armónico del péndulo.
+
+\subsubsection{Comparación de la velocidad máxima}
+
+Habíamos establecido que la velocidad máxima de un objeto con
+movimiento armónico simple estaba dada por $v_{\max} =
+\frac{2\pi A}{T}$. Ahora, existe una fórmula separada de la velocidad
+máxima de un péndulo la cual se obtiene de la siguiente manera:
+
+\begin{equation}
+  h_{\max} = L(1 - \cos{\theta_{\max}})\label{eq:altura}
+\end{equation}
+
+\begin{equation}
+  E_{inicial} = E_{final}
+\end{equation}
+
+\begin{equation}
+  mgL(1 - \cos{\theta_{\max}}) = \frac{1}{2}mv_{\max}^{2}
+\end{equation}
+
+Reemplazando $h_{\max}$ según la ecuación~\eqref{eq:altura} en la ecuación
+de energía inicial, se obtiene:
+
+\begin{equation}
+  mgL(1 - \cos{\theta_{\max}}) = \frac{1}{2}mv_{\max}^{2}
+\end{equation}
+
+Despejando $v_{\max}$, se obtiene:
+
+\begin{equation}
+  v_{\max} = \sqrt{2gL(1 - \cos{\theta_{\max}})}\label{eq:velocidad_max_energía}
+\end{equation}
+
+Se calcularon las velocidades máximas esperadas para cada longitud de
+cuerda utilizando la ecuación~\eqref{eq:velocidad_max_energía}, y
+estas se compararon con las velocidades máximas obtenidas a partir
+del análisis de movimiento armónico simple, utilizando el periodo
+experimentalmente determinado. Como es evidente, el porcentaje de
+variación es mínimo, lo que demuestra que las mediciones
+experimentales coinciden de manera bastante precisa con los valores
+teóricos obtenidos, confirmando la validez del modelo de movimiento
+armónico simple para este sistema.
+
+{\color{red} TODO: Hacer gráfica con 2 líneas de tendencia, una para
+cada columna, luego comparar las pendientes.}
+
 \subsection{Variación de la masa}
+
+\begin{table}[h]
+  \centering
+  \footnotesize
+  \begin{tabular}{cccccccc}
+    \toprule
+    % FIXME: Amplitude in meters confusion
+    $m$ (kg) & $T$ (s) & $A$ (m) & $\omega$ (rad/s) & $V_{\max}$ (s) &
+    $s(t)$ (m) & $v(t)$ (m/s) & $a(t)$ (m/s$^{2}$)\\
+    \midrule
+    0.05 & 1.66 & 0.10 & 3.78 & 0.39 & $0.10 \cos(3.78t)$ & $-0.39
+    \sin(3.78t)$ & $-1.50\cos(3.78t)$ \\
+    0.10 & 1.68 & 0.10 & 3.75 & 0.39 & $0.10 \cos(3.75t)$ & $-0.39
+    \sin(3.75t)$ & $-1.50\cos(3.75t)$ \\
+    0.15 & 1.68 & 0.10 & 3.74 & 0.39 & $0.10 \cos(3.74t)$ & $-0.39
+    \sin(3.74t)$ & $-1.50\cos(3.74t)$ \\
+    0.20 & 1.68 & 0.10 & 3.75 & 0.39 & $0.10 \cos(3.75t)$ & $-0.39
+    \sin(3.75t)$ & $-1.50\cos(3.75t)$ \\
+    0.25 & 1.68 & 0.10 & 3.74 & 0.39 & $0.10 \cos(3.74t)$ & $-0.39
+    \sin(3.74t)$ & $-1.50\cos(3.74t)$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Valores esperados para varios parámetros del péndulo según el
+    movimiento armónico simple y en función de la masa y periodo
+  (medidos)}\label{tab:masa_valores_esperados}
+\end{table}
 
 \subsection{Variación de la amplitud}
 
