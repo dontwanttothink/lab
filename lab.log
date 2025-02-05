@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.10.13)  4 FEB 2025 18:14
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2025.2.4)  5 FEB 2025 00:51
  restricted system commands enabled.
 **lab.tex
 (./lab.tex
@@ -907,11 +907,11 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/polyglossia/gloss-spanish.ldf
 File: gloss-spanish.ldf polyglossia: module for Spanish
 Module polyglossia Info: Language data for spanish
-(polyglossia)            loader	loadhyph-es.tex
-(polyglossia)            synonyms	espanol
-(polyglossia)            hyphenation	
 (polyglossia)            patterns	hyph-es.pat.txt
+(polyglossia)            hyphenation	
+(polyglossia)            loader	loadhyph-es.tex
 (polyglossia)            righthyphenmin	2
+(polyglossia)            synonyms	espanol
 (polyglossia)            lefthyphenmin	2 on input line 18
 Module polyglossia Info: Language spanish was not yet loaded; created with id 2 
 on input line 18
@@ -1112,85 +1112,111 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
 ]
+warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
+[1]
 Capítulo 1.
-[2
 
-]
 warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
-[1]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
-[1]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
-[2] [3] [4] [5] [6] [7] [8
+[1
+
+] [2] [3]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4] [5] [6] [7] [8] [9
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
-] [9
+] [10
 Missing character: There is no ; (U+003B) in font nullfont!
-] [10] [11
+] [11] [12
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 Capítulo 2.
-[12
-
-] [13
-Missing character: There is no ; (U+003B) in font nullfont!
-Missing character: There is no ; (U+003B) in font nullfont!
-] [14] [15]
-Capítulo 3.
-[16
+[13
 
 ]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
-[1]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
-[1]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
-[2]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.3'
-[3]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.4'
-[4
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14] [15
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [16]
+Capítulo 3.
+[17
+
+] [18] [19] [20
 warning  (pdf backend): ignoring duplicate destination with the name 'equation.3
 .2.13'
-]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-warning  (pdf backend): ignoring duplicate destination with the name 'page.5'
-[5]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.6'
-[6
-Missing character: There is no ; (U+003B) in font nullfont!
-Missing character: There is no ; (U+003B) in font nullfont!
+] [21] [22
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-warning  (pdf backend): ignoring duplicate destination with the name 'page.7'
-[7
+[23
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [24
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [25
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [26
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [27
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [28
+Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-warning  (pdf backend): ignoring duplicate destination with the name 'page.8'
-[8
+[29
 Missing character: There is no ; (U+003B) in font nullfont!
 Missing character: There is no ; (U+003B) in font nullfont!
-]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.9'
-[9]
-warning  (pdf backend): ignoring duplicate destination with the name 'page.10'
-[10
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [30
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [31
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [32
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [33
+Missing character: There is no ; (U+003B) in font nullfont!
+Missing character: There is no ; (U+003B) in font nullfont!
+] [34] [35] [36
 
 ] (./lab.aux)
  ***********
@@ -1198,20 +1224,20 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `lab.out' has not changed.
-(rerunfilecheck)             Checksum: AB5E3A19C0515C7959F5C6D2411A8F85;4844.
+(rerunfilecheck)             Checksum: C6FBE2D481C57D3DB3303390CA349DFB;6122.
 )
 
 Here is how much of LuaTeX's memory you used:
- 38350 strings out of 476447
+ 38652 strings out of 476447
  125038,1977958 words of node,token memory allocated
- 847 words of node memory still in use:
+ 911 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 6 glue, 4 kern, 1 penalty, 1 margin_ke
-rn, 3 glyph, 74 attribute, 55 glue_spec, 74 attribute_list, 2 write nodes
-   avail lists: 1:4,2:6414,3:3615,4:126,5:420,6:98,7:7396,8:40,9:893,10:12,11:67
-9
- 59383 multiletter control sequences out of 65536+600000
+rn, 3 glyph, 90 attribute, 55 glue_spec, 90 attribute_list, 2 write nodes
+   avail lists: 1:4,2:9072,3:4785,4:137,5:427,6:107,7:8362,8:48,9:1000,10:21,11:
+1082
+ 59632 multiletter control sequences out of 65536+600000
  61 fonts using 4748231 bytes
- 99i,19n,102p,999b,2277s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,102p,999b,2296s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local
 /texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2024/t
 exmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2024/texmf-dist/f
@@ -1236,10 +1262,10 @@ t/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
 r8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texl
 ive/2024/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on lab.pdf (31 pages, 289909 bytes).
+Output written on lab.pdf (39 pages, 385671 bytes).
 
-PDF statistics: 617 PDF objects out of 1000 (max. 8388607)
- 538 compressed objects within 6 object streams
- 169 named destinations out of 1000 (max. 131072)
- 272 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 755 PDF objects out of 1000 (max. 8388607)
+ 667 compressed objects within 7 object streams
+ 222 named destinations out of 1000 (max. 131072)
+ 296 words of extra memory for PDF output out of 10000 (max. 100000000)
 

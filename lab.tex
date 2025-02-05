@@ -39,12 +39,67 @@
 
 \tableofcontents
 
-\chapter{Reporte}
-
 \begin{abstract}
-  {\color{red} The abstract has to have information
-  about the mathematical modeling.}
+  Se estudió el movimiento de un péndulo: un cuerpo suspendido de una
+  cuerda unida a un soporte fijo que se balancea de un lado a otro
+  bajo la influencia de la gravedad. El modelado matemático del
+  péndulo se fundamenta en la relación cinemática y armónica del
+  ángulo $\theta$ con respecto a la vertical, lo que permite determinar la
+  ubicación de la masa en el plano de referencia y analizar los
+  cambios en su velocidad. Desde esta perspectiva, se puede estudiar
+  la evolución de las energías del sistema dentro del marco de la
+  mecánica clásica.
+
+  Consideramos un modelo ideal en el que la cuerda $L$ es inextensible
+  y sin masa, pero cuya longitud influye en la oscilación del
+  sistema, afectando su periodo y frecuencia. Al analizar
+  matemáticamente la posición del objeto de estudio en función del
+  tiempo, observamos que el movimiento resultante se
+  describe por una función sinusoidal, lo que evidencia la naturaleza
+  periódica del fenómeno.
+
+  Para contrastar el análisis teórico con resultados experimentales,
+  medimos el periodo de oscilación del péndulo mientras variábamos la
+  masa del objeto, la amplitud de liberación y la longitud de la
+  cuerda. La evidencia experimental, junto con el análisis
+  matemático, permitió concluir que el periodo de oscilación es
+  independiente de la masa del cuerpo suspendido y que el periodo
+  está correlacionado positivamente con la longitud de la cuerda.
+  Además, se encontró una correlación positiva entre la amplitud
+  inicial y la velocidad máxima del sistema.
+
+  Adicionalmente, se consideraron las fuentes de error experimental,
+  tales como la imprecisión en la medición del tiempo con
+  cronómetros, la lectura de los ángulos con el transportador y la
+  medición de la longitud de la cuerda. Se calcularon y presentaron
+  los porcentajes de desviación relativa para cada medición.
+
+  Finalmente, se realizó un análisis del experimento mediante el
+  movimiento armónico simple que este presenta para amplitudes
+  pequeñas. Se calcularon las velocidades máximas esperadas
+  utilizando fórmulas basadas en energía potencial y cinética. Estas
+  velocidades se compararon con las obtenidas experimentalmente,
+  mostrando una variación mínima y confirmando la validez del modelo
+  de movimiento armónico simple.
+
+  Además, se graficaron las funciones de desplazamiento, velocidad y
+  aceleración del péndulo para analizar cómo estas variables se
+  relacionan en el contexto del movimiento armónico simple. Las
+  gráficas permitieron verificar los efectos de las variaciones en la
+  longitud de la cuerda, la amplitud y la masa sobre el
+  comportamiento del péndulo. También se compararon y analizaron las
+  pendientes de las gráficas con los valores de las derivadas correspondientes.
+
+  Por último, se analizaron las energías potencial y cinética a lo
+  largo del movimiento. La energía potencial alcanzó su máximo en los
+  extremos del movimiento, mientras que la energía cinética fue
+  máxima al pasar por el punto más bajo. También se observó que la
+  aceleración era máxima en los extremos debido a la fuerza
+  restauradora. Además, se graficó la energía total en función de las
+  variables modificadas, evidenciando su conservación a lo largo del movimiento.
 \end{abstract}
+
+\chapter{Reporte}
 
 \section{Introducción}
 
@@ -69,7 +124,7 @@ El objeto de nuestro estudio es un péndulo simple, compuesto por una masa
 suspendida al final de una cuerda. La cuerda se desplaza hasta una
 cierta amplitud o ángulo y luego se libera. La velocidad del objeto
 es un vector tangente a la trayectoria circular del péndulo y actúa
-en el eje $x$, definido paralelo a $mg\sin{\alpha}$ como es visible
+en el eje $x$, definido paralelo a $mg\sin{\theta}$ como es visible
 en la figura~\ref{fig:fuerzas}.
 
 \begin{figure}[ht]
@@ -88,12 +143,12 @@ en la figura~\ref{fig:fuerzas}.
 
     \draw[->,dashed] (0,0) -- ({180 + \amplitude}:{\weight *
     sin(\amplitude)})
-    node[pos=1,left,yshift=0mm]{$mg\sin{\alpha}$};
+    node[pos=1,left,yshift=0mm]{$mg\sin{\theta}$};
 
     \draw[->,dashed] (0,0) -- ({270 + \amplitude}:{\weight *
     cos(\amplitude)})
     node[pos=1,right,yshift=0mm]
-    {$mg\cos{\alpha}$};
+    {$mg\cos{\theta}$};
 
     % Mass
     \draw[fill=gray!30] (0,0) circle [radius=0.05cm];
@@ -114,7 +169,7 @@ en la figura~\ref{fig:fuerzas}.
     node[near end, right, text=gray, font=\tiny]
     {$F_{T}$};
 
-    % First showcase of angle \alpha
+    % First showcase of angle \theta
     \draw[dashed] (A) ++(0, -1.3mm) -- ++(0, -1cm);
 
     \def\angleradius{5mm}
@@ -122,7 +177,7 @@ en la figura~\ref{fig:fuerzas}.
     \draw (A) ++({cos(270) * \angleradius}, {sin(270) * \angleradius})
     arc[start angle=270, end angle={270 + \amplitude}, radius=\angleradius]
     node[pos=0.7, below]
-    {$\alpha$};
+    {$\theta$};
 
     % Weight and its components
     \draw[->] (0,0) -- (270:\weight)
@@ -132,21 +187,21 @@ en la figura~\ref{fig:fuerzas}.
     \draw[->,dashed] (0,0) -- ({180 + \amplitude}:{\weight *
     sin(\amplitude)})
     node[pos=0.5,left,yshift=1.4mm,text=gray,font=\tiny]
-    {$mg\sin{\alpha}$};
+    {$mg\sin{\theta}$};
 
     \draw[->,dashed] (0,0) -- ({270 + \amplitude}:{\weight *
     cos(\amplitude)})
     node[pos=0.5,right,yshift=1mm,text=gray,font=\tiny]
-    {$mg\cos{\alpha}$};
+    {$mg\cos{\theta}$};
 
     % Mass
     \draw[fill=gray!30] (0,0) circle [radius=0.05cm];
 
-    % Second showcase of angle \alpha
+    % Second showcase of angle \theta
     \draw (0,0) ++({cos(270 * \angleradius)}, {sin(270) * \angleradius})
     arc[start angle=270, end angle={270 + \amplitude}, radius=\angleradius]
     node[pos=0.7, below]
-    {$\alpha$};
+    {$\theta$};
   \end{tikzpicture}
   \caption{Proyección del ángulo}
 \end{figure}
@@ -177,12 +232,12 @@ la masa. Esta fuerza siempre va dirigida hacia el punto de
 suspensión: el punto desde donde se encuentra colgada la cuerda.
 
 La velocidad angular~\omega{} se define como el ángulo recorrido por
-el objeto en un segundo, y se aproxima, cuando la amplitud~\alpha{} es
+el objeto en un segundo, y se aproxima, cuando la amplitud~\theta{} es
 pequeña, mediante la siguiente formula en términos de $g$, la
-aceleración gravitacional, y $l$, la longitud de la cuerda:
+aceleración gravitacional, y $L$, la longitud de la cuerda:
 
 \begin{equation}
-  \omega \approx \sqrt{\frac{g}{l}} \qquad\qquad \alpha < 15^{\circ}
+  \omega \approx \sqrt{\frac{g}{L}} \qquad\qquad \theta < 15^{\circ}
 \end{equation}
 
 La frecuencia $f$ es la cantidad de oscilaciones que ocurren por
@@ -198,7 +253,7 @@ definido como un movimiento de ida y vuelta. Este se calcula
 mediante la siguiente ecuación:
 
 \begin{equation}
-  T \approx 2\pi\sqrt{\frac{l}{g}} \qquad\qquad \alpha \ll 15^{\circ}
+  T \approx 2\pi\sqrt{\frac{L}{g}} \qquad\qquad \theta \ll 15^{\circ}
   \label{eq:periodo}
 \end{equation}
 
@@ -206,9 +261,9 @@ La demostración de la ecuación~\eqref{eq:periodo} se basa en una
 breve manipulación algebraica:
 
 \begin{align*}
-  \omega &= 2\pi f \approx \sqrt{\frac{g}{l}} \\
-  f &\approx \frac{1}{2\pi}\sqrt{\frac{g}{l}} \\
-  T &= \frac{1}{f} \approx 2\pi\sqrt{\frac{l}{g}}
+  \omega &= 2\pi f \approx \sqrt{\frac{g}{L}} \\
+  f &\approx \frac{1}{2\pi}\sqrt{\frac{g}{L}} \\
+  T &= \frac{1}{f} \approx 2\pi\sqrt{\frac{L}{g}}
 \end{align*}
 
 Podemos concluir que el periodo es directamente proporcional a la raíz de la
@@ -216,7 +271,7 @@ longitud de la cuerda, o, equivalentemente, que el cuadrado del periodo es
 proporcional a la longitud de la cuerda.
 
 \begin{align}
-  T &\propto \sqrt{l} \\
+  T &\propto \sqrt{L} \\
   T^{2} &\propto l
   \label{eq:periodo_proporcionalidad}
 \end{align}
@@ -233,6 +288,18 @@ cuelga: únicamente de la longitud de la cuerda y de la gravedad.
     efecto significativo sobre el periodo.
   \item Se espera que la variación de la masa sea irrelevante al periodo
     de oscilación del péndulo.
+  \item Se espera que el periodo observado coincida con el
+    esperado para el movimiento armónico simple.
+  \item Se espera que la velocidad máxima del péndulo ocurrirá
+    en el punto más bajo de su trayectoria.
+  \item Se espera que la velocidad máxima aumentará al aumentar
+    la longitud de cuerda.
+  \item Se espera que la energía potencial será máxima cuando el
+    péndulo alcance los puntos más altos de su trayectoria.
+  \item Se espera que la energía cinética será máxima cuando el
+    péndulo pase por el punto más bajo de su trayectoria.
+  \item Se espera que la aceleración será máxima en los puntos
+    más altos de su trayectoria.
 \end{itemize}
 
 \section{Diseño experimental}
@@ -280,7 +347,8 @@ Se necesitan:
   \item cuerda;
   \item un cronómetro;
   \item un soporte para el péndulo;
-  \item pesas de $0.05$\,kg, $0.10$\,kg, $0.20$\,kg, y $0.25$\,kg;
+  \item pesas de diferentes masas, detalladas en la
+    sección~\ref{sec:procedimiento};
   \item una regla;
   \item un transportador;
   \item una balanza;
@@ -288,9 +356,6 @@ Se necesitan:
 \end{itemize}
 
 \subsection{Variables y constantes}
-
-{\color{red}Robby quiere tablas para cada uno de los
-tres experimentos.}
 
 \subsubsection{Variación de la longitud de la cuerda}
 
@@ -406,14 +471,14 @@ cuadro~\ref{tab:masa_variables}.
   \caption{Caracterización de las variables}\label{tab:masa_variables}
 \end{table}
 
-\section{Procedimiento}
+\section{Procedimiento}\label{sec:procedimiento}
 
 En todos los casos, se calcularon promedios de los datos que se
 midieron más de una vez. El periodo de oscilación se aproximó
 dividiendo entre diez el tiempo promedio transcurrido en cada configuración
 experimental.
 
-\subsection{Variación de la longitud del cuerda}
+\subsection{Variación de la longitud de la cuerda}
 
 \begin{enumerate}
   \item Se midió 1\,m de cuerda con una regla.\label{it:proc1_inicio}
@@ -620,7 +685,7 @@ el periodo medido.
   \centering
   \begin{tikzpicture}
     \begin{axis}[
-        xlabel={Longitud $l$ (m)},
+        xlabel={Longitud $L$ (m)},
         ylabel={Periodo $T$ (s)},
         grid=both,
         scale=0.8,
@@ -632,7 +697,7 @@ el periodo medido.
 
       % Line of best fit
       \addplot[red] {1.2691*x + 0.8487};
-      \addlegendentry{$y = 1.2691x + 0.8487$};
+      \addlegendentry{$T = 1.2691L + 0.8487$};
 
       % Data points
       \addplot[only marks, mark=o]
@@ -648,7 +713,7 @@ el periodo medido.
   \centering
   \begin{tikzpicture}
     \begin{axis}[
-        xlabel={Longitud $l$ (m)},
+        xlabel={Longitud $L$ (m)},
         ylabel={Cuadrado del periodo $T^{2}$ ($\text{s}^{2}$)},
         grid=both,
         scale=0.8,
@@ -710,16 +775,16 @@ La ecuación teórica~\eqref{eq:periodo} puede manipularse para obtener una form
 similar a la ecuación de regresión:
 
 \begin{align*}
-  T &\approx 2\pi\sqrt{\frac{l}{g}} \\
-  T^{2} &\approx 4\pi^{2}\frac{l}{g} \\
-  T^{2} &\approx \frac{4\pi^{2}}{9.81\,\text{m/s$^{2}$}}l \\
-  T^{2} &\approx 4.03\,\text{s$^{2}$/m} \cdot l
+  T &\approx 2\pi\sqrt{\frac{L}{g}} \\
+  T^{2} &\approx 4\pi^{2}\frac{L}{g} \\
+  T^{2} &\approx \frac{4\pi^{2}}{9.81\,\text{m/s$^{2}$}}L \\
+  T^{2} &\approx 4.03\,\text{s$^{2}$/m} \cdot L
 \end{align*}
 
-El coeficiente 4.03 de la ecuación teórica es muy cercano al 3.97 obtenido
-mediante la regresión lineal de los datos experimentales. Esta similitud
-entre la teoría y los resultados experimentales fortalece la validez de
-nuestras conclusiones.
+El coeficiente 4.03 de la ecuación teórica es muy cercano (dentro de
+un 1.5\% de error) al 3.97 obtenido mediante la regresión lineal de los datos
+experimentales. Esta similitud entre la teoría y los resultados
+experimentales fortalece la validez de nuestras conclusiones.
 
 La pequeña diferencia entre ambos valores puede atribuirse a varios factores
 experimentales, como la resistencia del aire, pequeñas imperfecciones en la
@@ -734,7 +799,7 @@ existencia de errores sistemáticos en las mediciones.
   \centering
   \begin{tikzpicture}
     \begin{axis}[
-        xlabel={Amplitud $\alpha$ ($^{\circ}$)},
+        xlabel={Amplitud $\theta$ ($^{\circ}$)},
         ylabel={Periodo $T$ (s)},
         grid=both,
         scale=0.5,
@@ -748,7 +813,7 @@ existencia de errores sistemáticos en las mediciones.
 
       % Line of best fit
       \addplot[red] {0.0002*x + 1.6655};
-      \addlegendentry{$y = 0.0002x + 1.6655$};
+      \addlegendentry{$T = 0.0002\theta + 1.6655$};
 
       % Data points
       \addplot[only marks, mark=o]
@@ -756,7 +821,7 @@ existencia de errores sistemáticos en las mediciones.
       (15, 1.676) (18, 1.655)};
     \end{axis}
   \end{tikzpicture}
-  \caption{Amplitud $\alpha$ (grados) contra periodo $T$
+  \caption{Amplitud $\theta$ (grados) contra periodo $T$
   (segundos)}\label{fig:amplitud_periodo}
 \end{figure}
 
@@ -773,9 +838,9 @@ aceleración gravitacional y la longitud de la cuerda.
 
 Los resultados experimentales sugieren que el periodo de un péndulo simple es
 independiente de la amplitud de la oscilación. En la regresión lineal, se cree
-que el término independiente es consecuencia de los factores que se mantuvieron
-constantes durante el experimento, como la longitud de la cuerda y la
-aceleración gravitacional.
+que el término independiente (1.6655) es consecuencia de los factores
+que se mantuvieron constantes durante el experimento, como la
+longitud de la cuerda y la aceleración gravitacional.
 
 \subsubsection{Energía potencial}
 
@@ -797,14 +862,14 @@ del que el movimiento ocurre cuando se aumenta la amplitud. Sin
 embargo, las diferencias en energía potencial gravitatoria durante
 el experimento son mínimas.
 
-Se puede calcular la altura inicial $h$ de una pesa que se ata a un hilo de
-longitud $l$ y se libera con la amplitud $\alpha$ según la siguiente fórmula:
+Se puede calcular la altura inicial $h$ de una pesa que se ata a una cuerda de
+longitud $L$ y se libera con la amplitud $\theta$ según la siguiente fórmula:
 
 \begin{align}
-  h &= l(\sin{(270^{\circ} + \alpha)} - \sin{270^{\circ}}) \nonumber \\
-  &= l(\sin{(270^{\circ} + \alpha)} + 1) \nonumber \\
-  &= l(-\cos{\alpha} + 1) \nonumber \\
-  &= l(1 - \cos{\alpha})
+  h &= L(\sin{(270^{\circ} + \theta)} - \sin{270^{\circ}}) \nonumber \\
+  &= L(\sin{(270^{\circ} + \theta)} + 1) \nonumber \\
+  &= L(-\cos{\theta} + 1) \nonumber \\
+  &= L(1 - \cos{\theta})
 \end{align}
 
 También se puede calcular la energía potencial gravitatoria de la pesa
@@ -823,7 +888,7 @@ se ve en la figura~\ref{fig:energía_amplitud}.
   \begin{tikzpicture}
     \begin{axis}[
         scale=0.5,
-        xlabel={Amplitud $\alpha$ ($^{\circ}$)},
+        xlabel={Amplitud $\theta$ ($^{\circ}$)},
         ylabel={Energía potencial $T$ (J)},
         grid=major,
         xmin=0, xmax=20,
@@ -836,14 +901,14 @@ se ve en la figura~\ref{fig:energía_amplitud}.
     \end{axis}
   \end{tikzpicture}
   \caption{Energía potencial (julios) de una masa de $0.5$\,kg
-    liberada a un radio de $0.3$\,m contra amplitud de liberación $\alpha$
+    liberada a un radio de $0.3$\,m contra amplitud de liberación $\theta$
   (grados)}\label{fig:energía_amplitud}
 \end{figure}
 
 Los cálculos muestran que la diferencia entre las energías cinéticas
 para variaciones en pequeños valores de amplitud es pequeña.
 
-\subsection{Masa y periodo}
+\subsection{Masa y periodo}\label{sec:reporte_masa_periodo}
 
 \begin{figure}[ht]
   \centering
@@ -862,7 +927,7 @@ para variaciones en pequeños valores de amplitud es pequeña.
 
       % Line of best fit
       \addplot[red] {0.0043*x + 1.6621};
-      \addlegendentry{$y = 0.0043x + 1.6621$};
+      \addlegendentry{$T = 0.0043m + 1.6621$};
 
       % Data points
       \addplot[only marks, mark=o]
@@ -897,8 +962,6 @@ la sección~\ref{sec:velocidad_tangencial}, el periodo es independiente de la
 masa. Esto también es consistente con la fórmula~\eqref{eq:periodo}.
 
 \section{Conclusiones}
-
-{\color{red} Maybe we should redo this idk}
 
 El experimento permitió evaluar la validez de las hipótesis.
 En primer lugar, se planteó que existía una correlación positiva
@@ -949,6 +1012,31 @@ como la velocidad alcanzan sus máximos.
 
 \section*{¿Cómo se puede aumentar la velocidad tangencial?}
 
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}
+    % Define points
+    \coordinate (origin) at (0,0); % pivot point
+    \coordinate (ball) at ({2*cos(-60)},{2*sin(-60)}); % endpoint of the line
+
+    % Draw the main line at -60 degrees
+    \draw[thick] (origin) -- (ball) node[pos=1,circle,fill,inner sep=1.5pt] {};
+
+    % Vertical reference line (south line)
+    \draw[dotted] (origin) -- (0,-2);
+
+    % Indicating the angle
+    \draw[thick, ->] (0,-0.6) arc[start angle=-90,end angle=-60,radius=0.6];
+    \node at (0.3,-0.9) {$\theta$};
+
+    % Comparison line
+    \draw[dashed, red] (ball) -- ++(1, 0) node[right] {Diferencia en $y$};
+    \draw[dashed] ({2 * sin(30)},-2) -- ++(1, 0);
+  \end{tikzpicture}
+  \caption{La diferencia en $y$ entre el punto más bajo y el punto más alto
+  (cuando $\theta = \theta_{0}$)}\label{fig:angled_line}
+\end{figure}
+
 La velocidad máxima del péndulo ocurre cuando está en su punto más
 bajo y su energía gravitacional potencial se ha convertido totalmente
 en energía cinética.
@@ -956,11 +1044,11 @@ en energía cinética.
 La altura del péndulo relativa a su punto más bajo es descrita por la fórmula:
 
 \begin{align}
-  h &= l(\cos(0) - \cos(\alpha)) \nonumber \\
-  &= l(1 - \cos(\alpha))
+  h &= L(\cos(0) - \cos(\theta)) \nonumber \\
+  &= L(1 - \cos(\theta))
 \end{align}
 
-Donde $l$ se refiere a la longitud de la cuerda.
+Donde $L$ se refiere a la longitud de la cuerda.
 
 Por eso, sabemos que:
 
@@ -978,22 +1066,22 @@ Por otro lado, la velocidad del péndulo en su punto más bajo es dada por:
 Sustituyendo $h$,
 
 \begin{equation}
-  v^{2} = 2gl(1 - \cos(\alpha))
+  v^{2} = 2gL(1 - \cos(\theta))
 \end{equation}
 
 Podemos concluir que:
 
 \begin{equation}
-  v^{2} \propto l
+  v^{2} \propto L
 \end{equation}
 
 También,
 
 \begin{equation}
-  v^{2} \propto 1 - \cos(\alpha)
+  v^{2} \propto 1 - \cos(\theta)
 \end{equation}
 
-En otras palabras, aumentar el ángulo ($0 \leq \alpha \leq
+En otras palabras, aumentar el ángulo ($0 \leq \theta \leq
 180^{\circ}$) o aumentar la longitud de la cuerda resulta en una
 mayor velocidad tangencial.
 
@@ -1060,7 +1148,7 @@ periodo y la longitud de la cuerda tienen una correlación positiva.
 La fórmula es válida para un cuerpo que se libera sin una velocidad
 inicial, pero es útil para nuestro análisis porque se cree que la velocidad
 otorgada a la pesa por su caída parcial hasta este punto tiene un
-efecto mínimo comparable al de la amplitud \alpha.
+efecto mínimo comparable al de la amplitud \theta.
 
 Podemos afirmar con suficiente confianza que al reducirse la longitud
 efectiva de la cuerda, el periodo de la oscilación pequeña será mucho
@@ -1139,13 +1227,31 @@ máximo en la gráfica de posición-tiempo es más bajo que el anterior.
 
 \chapter{Apéndice}
 
-\begin{abstract}
-  {\color{red} Adaptar al nuevo enfoque.}
-\end{abstract}
-
 \section{Introducción}
 
-{\color{red}Adaptar al nuevo enfoque.}
+En el presente informe se analizan las propiedades de un péndulo
+simple desde la perspectiva del movimiento armónico simple (MAS). El
+movimiento armónico simple es un tipo de movimiento oscilatorio en el
+que la fuerza restauradora es directamente proporcional al
+desplazamiento y actúa en dirección opuesta a este. Esta relación
+lineal permite simplificar el análisis del péndulo para ángulos
+pequeños, donde la aproximación del seno del ángulo es válida.
+
+A través de la experimentación y la comparación con el modelo teórico
+del MAS, se exploran conceptos clave como el periodo, la frecuencia,
+la velocidad (tanto angular como máxima) y la energía (potencial,
+cinética y mecánica). Se examinan las relaciones entre estos
+parámetros y cómo varían en función de la longitud de la cuerda, la
+masa del objeto y el ángulo inicial de desplazamiento. Los resultados
+obtenidos en gran medida el comportamiento del péndulo
+simple predicho por la teoría del MAS, validando las simplificaciones
+realizadas y proporcionando una comprensión profunda de la física
+involucrada en este sistema clásico.
+
+Para esta parte del análisis, la amplitud se redefine como la
+longitud de la cuerda multiplicada por el seno del ángulo (es decir,
+la distancia del arco por donde oscila el péndulo). El ángulo al cual
+se eleva el péndulo se define como el ángulo inicial.
 
 \section{Marco teórico}
 
@@ -1191,7 +1297,7 @@ simple, la fuerza restauradora es aproximadamente:
 Donde:
 
 \begin{itemize}
-  \item $k = \frac{mg}{l}$ y $l$ es la longitud de la cuerda.
+  \item $k = \frac{mg}{L}$ y $L$ es la longitud de la cuerda.
   \item $s = l\theta$, el desplazamiento a lo largo del
     arco.\ \theta{} se mide en radianes.
 \end{itemize}
@@ -1300,8 +1406,8 @@ partícula en el movimiento circular uniforme correspondiente.
   T &= \frac{2\pi}{v_{\max}} \nonumber \\
   T &= 2\pi\sqrt{\frac{m}{k}} \quad \text{Ya que $v_{\max} =
   \sqrt{\frac{k}{m}}A$} \nonumber \\
-  T &= 2\pi\sqrt{\frac{l}{g}} \quad \text{Ya que $k =
-  \frac{mg}{l}$}\label{eq:mas_periodo}
+  T &= 2\pi\sqrt{\frac{L}{g}} \quad \text{Ya que $k =
+  \frac{mg}{L}$}\label{eq:mas_periodo}
 \end{align}
 
 \subsection{Frecuencia}
@@ -1314,7 +1420,7 @@ el movimiento armónico simple~\eqref{eq:mas_periodo} en la ecuación de la
 frecuencia, se obtiene:
 
 \begin{equation}
-  f = \frac{1}{2\pi}\sqrt{\frac{g}{l}}
+  f = \frac{1}{2\pi}\sqrt{\frac{g}{L}}
 \end{equation}
 
 \subsection{Velocidad}
@@ -1451,7 +1557,7 @@ da la aceleración en función del tiempo. Esto se expresa como:
 
 \section{Interpretación de los resultados}
 
-\subsection{Variación de la longitud}
+\subsection{Variación de la longitud de la cuerda}
 
 Véase la figura~\ref{fig:distancia_tiempo} en la
 página~\pageref{fig:distancia_tiempo}. En primer lugar, es
@@ -1639,7 +1745,7 @@ requiere el péndulo para completar una oscilación.
 
 Otra comparación relevante es entre el periodo medido en el
 experimento y el calculado mediante la fórmula del periodo para el
-movimiento armónico simple (fórmula {\color{red} TODO}). En la
+movimiento armónico simple (fórmula~\eqref{eq:mas_periodo}). En la
 tabla~\ref{tab:comparación_longitud}, así como la
 figura~\ref{fig:periodo_mas} se representan ambos valores en
 función de la longitud de la cuerda.
@@ -1654,8 +1760,8 @@ Se han incluido porcentajes de variación. Estos se calculan con la fórmula:
 Donde $T_{e}$ es el periodo esperado y $T_{m}$ es el periodo medido.
 
 Como se observa, los resultados experimentales y teóricos son muy
-similares, lo que se refleja en las pendientes de las curvas
-{\color{red}TODO} y {\color{red}TODO},
+similares, lo que se refleja en la cercanía de los puntos a la
+tendencia de la curva en la figura~\ref{fig:periodo_mas},
 las cuales prácticamente coinciden. Esta correspondencia indica que
 la relación entre el periodo y la longitud de la cuerda siguen
 cercanamente al modelo teórico, lo cual demuestra el movimiento
@@ -1673,7 +1779,7 @@ máxima de un péndulo la cual se obtiene de la siguiente manera:
 \end{equation}
 
 \begin{equation}
-  E_{inicial} = E_{final}
+  E_{\text{inicial}} = E_{\text{final}}
 \end{equation}
 
 \begin{equation}
@@ -1693,7 +1799,8 @@ Despejando $v_{\max}$, se obtiene:
   v_{\max} = \sqrt{2gL(1 - \cos{\theta_{\max}})}\label{eq:velocidad_max_energía}
 \end{equation}
 
-Se calcularon las velocidades máximas esperadas para cada longitud de
+Para la figura~\ref{fig:velocidad_máxima_mas_energía} se calcularon
+las velocidades máximas esperadas para cada longitud de
 cuerda utilizando la ecuación~\eqref{eq:velocidad_max_energía}, y
 estas se compararon con las velocidades máximas obtenidas a partir
 del análisis de movimiento armónico simple, utilizando el periodo
@@ -1703,8 +1810,197 @@ experimentales coinciden de manera bastante precisa con los valores
 teóricos obtenidos, confirmando la validez del modelo de movimiento
 armónico simple para este sistema.
 
-{\color{red} TODO: Hacer gráfica con 2 líneas de tendencia, una para
-cada columna, luego comparar las pendientes.}
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Velocidad máxima $v_{\max}$ (m/s)},
+        grid=both,
+        legend style={at={(1,1.50)}},
+        xmin=0, xmax=1.1,
+        ymin=0, ymax=1,
+        width = 13cm,
+        height = 6cm,
+        domain=0:1.3,
+        samples=200,
+      ]
+
+      % Expected values
+      \addplot[red, only marks, mark=+] coordinates {(0.15, 0.256)
+      (0.30, 0.389) (0.50, 0.529) (1.00, 0.790)};
+      \addlegendentry{Aproximación basada en el MAS según los datos
+      experimentales};
+
+      % Data points
+      \addplot[blue, only marks, mark=o]
+      coordinates {(0.15, 0.224) (0.30, 0.317) (0.50, 0.489) (1.00, 0.578)};
+      \addlegendentry{Expectativa según análisis energético};
+
+      % Líneas de tendencia
+      \addplot[red] {0.6129 * x + 0.1924};
+      \addlegendentry{Línea de tendencia para la aprox. MAS}
+
+      \addplot[blue] {0.4042 * x + 0.1849};
+      \addlegendentry{Línea de tendencia para la expectativa energética};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Comparación de la velocidad máxima obtenida a partir del
+    análisis del movimiento armónico simple con los datos
+    experimentales frente a la calculada mediante la fórmula teórica
+  para un péndulo}\label{fig:velocidad_máxima_mas_energía}
+\end{figure}
+
+\subsubsection{Cambios en la velocidad máxima: análisis gráfico}
+
+Los resultados de la gráfica (la anterior, la que muestra las
+velocidades máximas) también se reflejan en las gráficas de
+velocidad en función del tiempo. En primer lugar, se representaron
+las ecuaciones para longitudes de cuerda de 0.15\,m (curva morada) y
+0.3\,m (curva negra) en la
+figura~\ref{fig:velocidad_tiempo_longitudes} de la
+página~\pageref{fig:velocidad_tiempo_longitudes}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Velocidad máxima $v_{\max}$ (m/s)},
+        grid=both,
+        legend style={at={(1,1.30)}},
+        xmin=0, xmax=4,
+        ymin=-1, ymax=1,
+        width = 13cm,
+        height = 6cm,
+        domain=0:4,
+        samples=200,
+      ]
+
+      \addplot[red!50!blue] {-0.256 * sin(6.512 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.15\text{\,m}$}
+
+      \addplot[black] {-0.389 * sin(4.953 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.30\text{\,m}$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Velocidad $v$ contra tiempo $t$ para una longitud $L$ de
+  0.15\, y 0.30\,m}\label{fig:velocidad_tiempo_longitudes}
+\end{figure}
+
+Como se evidencia, la distancia del eje $x$ a las crestas o valles, la
+cual indica la velocidad máxima, es mayor en la curva correspondiente
+a la longitud de 0.3 metros. Para demostrar la continuidad de esta
+tendencia, se graficaron las ecuaciones de velocidad comparando la
+longitud de cuerda de 0.3 m con la de 0.5 m en la
+gráfica~\ref{fig:velocidad_tiempo_longitudes2}, y
+posteriormente la de 0.5 m con la de 1 m en la
+gráfica~\ref{fig:velocidad_tiempo_longitudes3}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Velocidad máxima $v_{\max}$ (m/s)},
+        grid=both,
+        legend style={at={(1,1.30)}},
+        xmin=0, xmax=4,
+        ymin=-1, ymax=1,
+        width = 13cm,
+        height = 6cm,
+        domain=0:4,
+        samples=200,
+      ]
+
+      \addplot[black] {-0.389 * sin(4.953 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.30\text{\,m}$};
+
+      \addplot[red] {-0.529 * sin(4.043 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.15\text{\,m}$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Velocidad $v$ contra tiempo $t$ para una longitud $L$ de
+  0.30\, y 0.50\,m}\label{fig:velocidad_tiempo_longitudes2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Velocidad máxima $v_{\max}$ (m/s)},
+        grid=both,
+        legend style={at={(1,1.30)}},
+        xmin=0, xmax=4,
+        ymin=-1, ymax=1,
+        width = 13cm,
+        height = 6cm,
+        domain=0:4,
+        samples=200,
+      ]
+
+      \addplot[red] {-0.529 * sin(4.043 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.50\text{\,m}$};
+
+      \addplot[blue] {-0.790 * sin(3.019 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 1.00\text{\,m}$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Velocidad $v$ contra tiempo $t$ para una longitud $L$ de
+  0.50\, y 1.00\,m}\label{fig:velocidad_tiempo_longitudes3}
+\end{figure}
+
+Las gráficas respaldan la conclusión de que, a medida que la longitud
+de la cuerda aumenta, la velocidad máxima también lo hace.
+
+\subsubsection{Cambios en la aceleración: análisis gráfico}
+
+Para evaluar el efecto de la variación en la longitud de cuerda en la
+aceleración del movimiento, se graficaron dentro de la
+figura~\ref{fig:aceleración_tiempo} las ecuaciones de
+aceleración en función del tiempo para la longitud de cuerda de
+0.15\,m (curva verde) y la longitud de cuerda de 0.3\,m (curva morada).
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud $L$ (m)},
+        ylabel={Velocidad máxima $v_{\max}$ (m/s)},
+        grid=both,
+        legend style={at={(1,1.30)}},
+        xmin=0, xmax=4,
+        ymin=-2.3, ymax=2.3,
+        width = 13cm,
+        height = 6cm,
+        domain=0:4,
+        samples=200,
+      ]
+
+      \addplot[green!50!black] {-1.665 * cos(6.512 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.15\text{\,m}$};
+
+      \addplot[red!50!blue] {-1.927 * cos(4.953 * x * 360/(2 * pi))};
+      \addlegendentry{$L = 0.30\text{\,m}$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Velocidad $v$ contra tiempo $t$ para una longitud $L$ de
+  0.50\, y 1.00\,m}\label{fig:aceleración_tiempo}
+\end{figure}
+
+En el movimiento armónico simple, la fuerza restauradora es
+proporcional a la amplitud, que en este caso se refiere al producto
+de la longitud de la cuerda y el seno del ángulo. Al aumentar la
+amplitud, la fuerza restauradora incrementa, lo que provoca un
+aumento en la aceleración, según la segunda ley de Newton. Este
+comportamiento se refleja en la gráfica, ya que para la longitud de
+cuerda de 0.3 m, la aceleración alcanza valores más altos. Sin
+embargo, lo anterior muestra una inexactitud del modelo como
+resultado de la simplificación matemática realizada, ya que esto no
+ocurre en el péndulo real. En este, la aceleración máxima no muestra
+cambios significativos a medida que varía la longitud, ya que está
+determinada únicamente por el ángulo y la aceleración gravitacional.
 
 \subsection{Variación de la masa}
 
@@ -1734,13 +2030,548 @@ cada columna, luego comparar las pendientes.}
   (medidos)}\label{tab:masa_valores_esperados}
 \end{table}
 
-\subsection{Variación de la amplitud}
+Los resultados experimentales muestran una variación mínima en el
+periodo a medida que se cambió la masa, consistente con el
+comportamiento del modelo matemático basado en el movimiento armónico simple.
 
-% TODO: Finish this section
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Masa $m$ (kg)},
+        ylabel={Periodo $T$ (s)},
+        grid=both,
+        legend style={at={(1,1.35)}},
+        xmin=0, xmax=0.3,
+        ymin=0, ymax=2,
+        domain=0:0.3,
+        samples=2,
+      ]
+
+      % Expected values
+      \addplot[red] {2*pi*sqrt(0.6/9.81)};
+      \addlegendentry{Periodo esperado};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(0.05, 1.660) (0.10, 1.677) (0.15, 1.679) (0.20,
+      1.678) (0.25, 1.681)};
+      \addlegendentry{Periodo medido};
+
+      % Linear regression
+      \addplot[gray] {0.0043*x + 1.6621};
+      \addlegendentry{$T = 0.0043m + 1.6621$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Periodo $T$ medido y esperado para un movimiento armónico
+    simple de las mismas características
+    $\left(2\pi\sqrt{\frac{L}{g}}\right)$ en función de la masa
+  $m$}\label{fig:masa_periodo_mas}
+\end{figure}
+
+Como se discute en la sección~\ref{sec:reporte_masa_periodo}, la
+regresión lineal de los datos experimentales da la siguiente ecuación:
+
+\begin{equation}
+  T = 0.0043m + 1.6621
+\end{equation}
+
+En este polinomio, el factor de la variable independiente $m$ es
+diminuto, indicando una variación mínima en el periodo a medida que
+se cambia la masa. Por su parte, el término constante proviene de los
+factores sobre el periodo que se mantuvieron iguales, como la
+longitud de la cuerda y la aceleración debida a la gravedad. Es
+posible calcular la variación entre el término constante de la regresión y el
+valor esperado del periodo para una masa de 0.05\,kg:
+
+\begin{equation}
+  \text{Variación} = \frac{\lvert 1.6621 - 1.5538 \rvert}{1.553}
+  \times 100 \approx 6.97\%
+\end{equation}
+
+En el modelo, la masa del objeto en movimiento es irrelevante a su
+periodo. La fórmula~\ref{eq:mas_periodo}
+caracteriza al periodo en función de la longitud de la cuerda y
+aceleración gravitacional —factores que no dependen de la masa. Esto
+corrobora la hipótesis 4 del reporte.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Desplazamiento $s(t)$ (m)},
+        % Move the legend to the top right
+        legend style={at={(1,1.45)}},
+        grid=both,
+        height = 6cm,
+        width = 15cm,
+        xmin=0, xmax=4,
+        ymin=-0.20, ymax=0.20,
+        domain=0:4,
+        samples=200,
+      ]
+      \addplot[green!40!black] {0.10 * cos(3.786 * x * 360/(2*pi))};
+      \addlegendentry{$m = 0.05$ kg};
+      \addplot[purple] {0.10 * cos(3.748 * x * 360/(2*pi))};
+      \addlegendentry{$m = 0.10$ kg};
+      \addplot[black] {0.10 * cos(3.742 * x * 360/(2*pi))};
+      \addlegendentry{$m = 0.15$ kg};
+      \addplot[red] {0.10 * cos(3.745 * x * 360/(2*pi))};
+      \addlegendentry{$m = 0.20$ kg};
+      \addplot[blue] {0.10 * cos(3.739 * x * 360/(2*pi))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de desplazamiento $s$ contra tiempo $t$ para las
+    cinco masas. Como es evidente, los periodos (distancia de cresta a
+  cresta) son prácticamente iguales, y las curvas no se pueden distinguir.}
+\end{figure}
+
+\subsection{Variación del ángulo inicial}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Ángulo inicial $\theta_{0}$ ($^{\circ}$)},
+        ylabel={Periodo $T$ (s)},
+        grid=both,
+        legend style={at={(1,1.50)}},
+        width=8cm,
+        height=5cm,
+        xmin=0, xmax=20,
+        ymin=0, ymax=3,
+        domain=0:20,
+        samples=2, % because it's all straight lines
+      ]
+
+      % Expected values
+      \addplot[red] {2*pi*sqrt(0.6/9.81)};
+      \addlegendentry{Periodo esperado};
+
+      % Data points
+      \addplot[only marks, mark=o]
+      coordinates {(6, 1.657) (9, 1.668) (12, 1.680) (15, 1.676)
+      (18, 1.655)};
+      \addlegendentry{Periodo medido};
+
+      % Linear regression
+      \addplot[gray] {0.0002*x + 1.6655};
+      \addlegendentry{$T = 0.0002\theta_{0} + 1.6655$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Periodo $T$ medido y esperado para un movimiento armónico
+    simple de las mismas características
+    $\left(2\pi\sqrt{\frac{L}{g}}\right)$ en función del ángulo inicial
+  $\theta_{0}$}\label{fig:ángulo_inicial}
+\end{figure}
+
+La figura~\ref{fig:ángulo_inicial} en la
+página~\pageref{fig:ángulo_inicial} muestra la relación entre la
+amplitud y el periodo. La variación entre los puntos es mínima, y se puede
+modelar con una regresión lineal. La ecuación de la regresión es:
+
+\begin{equation}
+  T = 0.0002\theta_{0} + 1.6655
+\end{equation}
+
+Donde $\theta_{0}$ es el ángulo inicial. El factor de la variable
+independiente $\theta_{0}$ es diminuto, lo que indica una variación
+insignificante en el periodo a medida que se cambia el ángulo
+inicial. La ausencia de una relación clara es consistente con la
+ecuación~\ref{eq:mas_periodo}, la cual describe el periodo únicamente
+en función de la aceleración gravitacional y la longitud de la cuerda.
+
+En la figura~\ref{fig:comparación_desplazamiento_tiempo} de la
+página~\pageref{fig:comparación_desplazamiento_tiempo}, se
+graficaron las ecuaciones de desplazamiento contra tiempo para los cinco ángulos
+iniciales: 6, 9, 12, 15 y 18$^{\circ}$, en las curvas roja, azul,
+verde, morada y negra respectivamente. El periodo corresponde a la
+distancia entre crestas sucesivas en cada curva, y como es evidente
+en la gráfica, para todas las curvas, esta distancia es prácticamente la misma.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Desplazamiento $s(t)$ (m)},
+        % Move the legend to the top right
+        legend style={at={(1,1.65)}},
+        grid=both,
+        height = 6cm,
+        width = 15cm,
+        xmin=0, xmax=4,
+        ymin=-0.20, ymax=0.20,
+        domain=0:4,
+        samples=200,
+      ]
+      \addplot[red] {0.063 * cos(3.792 * x * 360/(2*pi))};
+      \addlegendentry{$\theta_{0} = 6^{\circ}$};
+      \addplot[blue] {0.094 * cos(3.767 * x * 360/(2*pi))};
+      \addlegendentry{$\theta_{0} = 9^{\circ}$};
+      \addplot[green!40!black] {0.126 * cos(3.741 * x * 360/(2*pi))};
+      \addlegendentry{$\theta_{0} = 12^{\circ}$};
+      \addplot[purple] {0.157 * cos(3.749 * x * 360/(2*pi))};
+      \addlegendentry{$\theta_{0} = 15^{\circ}$};
+      \addplot[black] {0.189 * cos(3.796 * x * 360/(2*pi))};
+      \addlegendentry{$\theta_{0} = 18^{\circ}$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de desplazamiento $s$ contra tiempo $t$ para los
+    cinco ángulos iniciales. Las curvas se pueden distinguir solo a
+    causa de los diferentes desplazamientos máximos o
+  amplitudes.}\label{fig:comparación_desplazamiento_tiempo}
+\end{figure}
+
+\subsection{Relación entre las gráficas de desplazamiento, velocidad y
+aceleración}
+
+Para explicar la relación entre las gráficas de desplazamiento, velocidad y
+aceleración, primero se graficaron las ecuaciones de $s(t)$ y $v(t)$
+para una longitud de cuerda de 1 metro y una elevación de 15 grados,
+como se observa en la figura~\ref{fig:desplazamiento_velocidad} de la
+página~\pageref{fig:desplazamiento_velocidad}.
+
+% figura de desplazamiento y velocidad combinadas
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Desplazamiento $s(t)$ (m) y velocidad $v(t)$ (m/s)},
+        % Move the legend to the top right
+        legend style={at={(1,1.30)}},
+        grid=both,
+        height = 6cm,
+        width = 15cm,
+        xmin=0, xmax=4,
+        ymin=-2.5, ymax=2.5,
+        domain=0:4,
+        samples=200,
+      ]
+      \addplot[green!40!black] {0.259 * cos(2 * pi * x / 2.08 * 360/(2*pi))};
+      \addlegendentry{$s(t)$};
+      \addplot[black] {-0.781 * sin(2 * pi * x / 2.08 * 360/(2*pi))};
+      \addlegendentry{$v(t)$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de desplazamiento $s(t)$ y velocidad $v(t)$ en
+    función del tiempo $t$ para una
+    longitud de cuerda de 1 metro y una elevación de 15
+  grados.}\label{fig:desplazamiento_velocidad}
+\end{figure}
+
+Tomando el eje $y$ como el desplazamiento angular y el eje $x$ como
+tiempo, para la curva verde, en $t=0$, $s=A$. En otras palabras, el
+desplazamiento es máximo, ya que al inicio el objeto se encuentra en
+el punto más alejado de su posición de equilibrio. Luego, esta
+distancia disminuye hasta $s=0$, el punto de equilibrio. A
+continuación, el desplazamiento se vuelve negativo, lo que indica que
+el objeto se encuentra en el lado opuesto, hasta que alcanza $s=-A$.
+El ciclo se repite de manera simétrica.
+
+La pendiente de la gráfica del desplazamiento en función del tiempo
+(en verde) corresponde a la velocidad en función del tiempo. Al
+principio, cuando la masa está en el ponto más alto (en otras
+palabras, $s=A$), la pendiente es cero porque la velocidad es nula. A
+medida que el péndulo se mueve hacia el punto de equilibrio (en otras
+palabras, $s=0$), la pendiente aumenta, alcanzando su valor máximo,
+ya que en ese punto toda la energía es cinética. Luego, la pendiente
+disminuye hasta llegar a cero nuevamente en el punto más bajo (en
+otras palabras, $s=A$ —el valle), donde toda la energía es potencial
+y la velocidad es cero.
+
+Este fenómeno puede observarse más claramente en la gráfica de
+velocidad en función del tiempo (en negro). Como se ve en esta
+gráfica, la velocidad comienza en cero en el punto más alto. Luego,
+alcanza un valor máximo negativo al llegar al punto de equilibrio, ya
+que el movimiento se dirige hacia la izquierda. Después, vuelve a ser
+cero en el segundo punto más alto y se vuelve positiva al regresar
+hacia el equilibrio, repitiendo este ciclo.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Tiempo $t$ (s)},
+        ylabel={Velocidad $v(t)$ (m/s) y aceleración $a(t)$ (m/s$^{2}$)},
+        % Move the legend to the top right
+        legend style={at={(1,1.30)}},
+        grid=both,
+        height = 6cm,
+        width = 15cm,
+        xmin=0, xmax=4,
+        ymin=-2.5, ymax=2.5,
+        domain=0:4,
+        samples=200,
+      ]
+      \addplot[black] {-0.781 * sin(2 * pi * x / 2.08 * 360/(2*pi))};
+      \addlegendentry{$s(t)$};
+      \addplot[blue] {-2.358 * cos(2 * pi * x / 2.08 * 360/(2*pi))};
+      \addlegendentry{$v(t)$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de velocidad $v(t)$ y aceleración $a(t)$ en
+    función del tiempo $t$ para una
+    longitud de cuerda de 1 metro y una elevación de 15
+  grados.}\label{fig:velocidad_aceleración}
+\end{figure}
+
+Finalmente, la pendiente de una gráfica de velocidad contra el tiempo
+representa la aceleración, que también varía durante el movimiento.
+Véase la figura~\ref{fig:velocidad_aceleración} de la
+página~\pageref{fig:velocidad_aceleración}.
+Al principio, la pendiente (curva negra) es negativa, ya que se
+dirige en la dirección de la fuerza restauradora, que va hacia la
+izquierda desde $s=A$. Esto ocurre porque la aceleración es máxima en
+los extremos del movimiento, donde la fuerza restauradora es mayor
+($F=ma$, entonces $a \propto F$). La fuerza restauradora es proporcional al seno
+del ángulo (\theta) de desplazamiento. Es decir, cuanto mayor es el
+ángulo, mayor es la componente de la fuerza restauradora que actúa en
+la dirección de la oscilación. En el punto más bajo (el punto de
+equilibrio, $s=0$), la pendiente es cero, ya que la aceleración es
+mínima en este punto. Esto se debe a que en el punto de equilibrio,
+el ángulo es cero y, por lo tanto, la fuerza restauradora también lo
+es. En este mismo valor de X, la curva azul (de aceleración) también
+se encuentra en $y=0$. Es decir, la pendiente de la curva negra
+coincide con el valor de y de la curva azul. Posteriormente, la
+pendiente se vuelve positiva cuando la masa se mueve desde el punto
+de equilibrio hacia $s=-A$, indicando que la aceleración actúa en la
+dirección opuesta. El ciclo se repite.
+
+\subsection{Energías en función del ángulo}
+
+\subsubsection{Energía potencial gravitacional}
+
+En el punto más alto del movimiento —es decir, en los extremos —toda
+la energía es potencial. Ahora, dado que
+
+\begin{equation*}
+  E_{p} = mgL(1 - \cos \theta_{0})
+\end{equation*}
+
+En el punto más alto, la altura $h$ sería máxima, por lo que podemos
+reemplazarla por el valor de la ecuación~\eqref{eq:altura} de la
+página~\pageref{eq:altura} para obtener:
+
+\begin{align}
+  E_{p} &= mgh_{\max} \nonumber \\
+  E_{p} &= mgh_{\max} \label{eq:epg_máxima}
+\end{align}
+
+Esta ecuación permite conocer la energía potencial en términos del
+ángulo de la masa.
+
+\subsubsection{Energía cinética}
+
+La energía mecánica del péndulo se mantiene constante, de ahí que:
+
+\begin{equation}
+  E_{m} = E_{c} + E_{p}
+\end{equation}
+
+Donde $E_{m}$ es la energía mecánica, $E_{c}$ es la energía cinética y
+$E_{p}$ es la energía potencial gravitacional.
+
+Reemplazando $E_{p}$ según la ecuación~\eqref{eq:epg_máxima}, se
+obtiene para cualquier valor de $\theta$:
+
+\begin{equation}
+  E_{m} = E_{c} + mgL(1 - \cos \theta)
+\end{equation}
+
+Se sabe que la energía es totalmente potencial en los extremos, por
+lo se puede reemplazar $E_{m}$ por el valor de $E_{p}$ cuando $\theta
+= \theta_{0}$, también según la ecuación~\eqref{eq:epg_máxima}:
+
+\begin{equation}
+  mgL(1 - \cos \theta_{0}) = E_{c} + mgL(1 - \cos \theta)
+\end{equation}
+
+Al despejar la energía cinética, se obtiene:
+
+\begin{equation}
+  E_{c} = mgL(\cos \theta - \cos \theta_{0})\label{eq:energía_cinética}
+\end{equation}
+
+\subsubsection{Variación de las energías}
+
+Para demostrar la relación entre las
+ecuaciones~\eqref{eq:epg_máxima}y~\eqref{eq:energía_cinética}, se
+graficaron ambas en función del ángulo para una cuerda de 0.15\,m de
+longitud, una masa de 0.05\,kg y un ángulo inicial de 15$^{\circ}$.
+
+En primer lugar, la curva roja en la figura~\ref{fig:energías} de la
+página~\pageref{fig:energías} representa la energía potencial, cuyo
+valor máximo ocurre cuando el ángulo $\theta$ es máximo (tanto en el extremo
+positivo como en el negativo), ya que en estos puntos la masa alcanza
+su mayor altura. En contraste, la energía cinética (curva azul)
+alcanza su valor máximo cuando $\theta = 0$ y su valor mínimo en los extremos,
+donde toda la energía es potencial.
+
+Además, se graficó la suma de ambas ecuaciones en azul, la cual representa la
+energía total del sistema. Como es evidente, esta se muestra como una
+línea recta, lo que confirma que la energía total se mantiene constante.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Ángulo $\theta$ ($^{\circ}$)},
+        ylabel={Energía (J)},
+        % Move the legend to the top right
+        legend style={at={(1,1.45)}},
+        grid=both,
+        height = 6cm,
+        width = 15cm,
+        xmin=-15, xmax=15,
+        ymin=0, ymax=0.003,
+        domain=-15:15,
+        samples=200,
+      ]
+      \addplot[red] {0.05 * 9.81 * 0.15 * (1 - cos(15))};
+      \addlegendentry{Energía total};
+      \addplot[blue] {0.05 * 9.81 * 0.15 * (cos(x) - cos(15))};
+      \addlegendentry{Energía cinética};
+      \addplot[green!40!black] {0.05 * 9.81 * 0.15 * (1 - cos(x))};
+      \addlegendentry{Energía potencial gravitacional}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Gráfica de energía potencial, cinética y total en función
+    del ángulo $\theta$ para una cuerda de 0.15\,m de longitud, una
+  masa de 0.05\,kg y un ángulo inicial de 15$^{\circ}$}\label{fig:energías}
+\end{figure}
+
+\subsection{Energía mecánica en función del ángulo inicial, masa y
+longitud de la cuerda}
+
+Como ya se mencionó, la ecuación que define la energía mecánica es:
+
+\begin{equation}
+  E_{m} = mgL(1 - \cos \theta_{0})
+\end{equation}
+
+Esta ecuación establece que la energía mecánica es proporcional a la
+masa, la longitud de la cuerda y el ángulo inicial. Lo anterior se
+demuestra en las figura~\ref{fig:energía_mecánica_ángulo_inicial}, la
+figura~\ref{fig:energía_mecánica_masa}, y la
+figura~\ref{fig:energía_mecánica_longitud_cuerda} de la
+página~\pageref{fig:energía_mecánica_ángulo_inicial}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Ángulo $\theta$ ($^{\circ}$)},
+        ylabel={Energía (J)},
+        % Move the legend to the top right
+        legend style={at={(1,1.45)}},
+        grid=both,
+        height = 7cm,
+        width = 15cm,
+        xmin=0, xmax=180,
+        ymin=0, ymax=0.6,
+        domain=0:180,
+        samples=200,
+      ]
+      \addplot[red] {0.05 * 9.81 * 0.6 * (1 - cos(x))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Energía mecánica $E_{m}$ en función del ángulo inicial
+  $\theta_{0}$}\label{fig:energía_mecánica_ángulo_inicial}
+\end{figure}
+
+Un mayor ángulo inicial lleva a una mayor altura, lo que resulta en
+una mayor energía potencial inicial. Sin embargo, la altura es
+proporcional al coseno del ángulo, no el ángulo en si, por lo que la
+relación no es lineal y la
+gráfica~\ref{fig:energía_mecánica_ángulo_inicial} no es una línea recta.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Masa $m$ (kg)},
+        ylabel={Energía (J)},
+        % Move the legend to the top right
+        legend style={at={(1,1.45)}},
+        grid=both,
+        height = 7cm,
+        width = 15cm,
+        xmin=0, xmax=50,
+        ymin=0, ymax=5,
+        domain=0:50,
+        samples=2,
+      ]
+      \addplot[red] {x * 9.81 * 0.6 * (1 - cos(10))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Energía mecánica $E_{m}$ en función la masa
+  $m$}\label{fig:energía_mecánica_masa}
+\end{figure}
+
+La energía potencial y cinética dependen de la masa. Al aumentar la
+masa, ambas energías aumentan de una manera directamente
+proporcional, lo que también incrementa la energía total.
+Precisamente debido su proporcionalidad lineal, la gráfica de la
+energía total en función de la masa
+(figura~\ref{fig:energía_mecánica_masa}) es una línea recta.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+        xlabel={Longitud de la cuerda $L$ (m)},
+        ylabel={Energía (J)},
+        % Move the legend to the top right
+        legend style={at={(1,1.45)}},
+        grid=both,
+        height = 6cm,
+        width = 15cm,
+        xmin=0, xmax=1,
+        ymin=0, ymax=0.01,
+        domain=0:1,
+        samples=2,
+      ]
+      \addplot[red] {0.05 * 9.81 * x * (1 - cos(10))};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Energía mecánica $E_{m}$ en función la longitud de la
+  cuerda $L$}\label{fig:energía_mecánica_longitud_cuerda}
+\end{figure}
+
+La gráfica~\ref{fig:energía_mecánica_longitud_cuerda} demuestra la
+proporcionalidad lineal entre la longitud de
+la cuerda y la energía total. Es una línea recta debido a esta relación lineal.
 
 \section{Conclusiones}
 
-{\color{red} Adaptar al nuevo enfoque.}
+Los periodos observados en el experimento coincidieron estrechamente
+con los calculados mediante la fórmula del periodo para el movimiento
+armónico simple. Esta similitud indica que el comportamiento del
+péndulo se ajusta bien al modelo teórico.
+
+En cuanto al incremento de la velocidad máxima, se observó que esta
+ocurre en el punto más bajo de la trayectoria del péndulo y aumenta
+conforme se incrementa la longitud de la cuerda. Esto se corroboró a
+través de análisis gráficos que mostraron una tendencia clara en las
+velocidades máximas obtenidas experimentalmente.
+
+Respecto a la energía potencial, esta alcanzó su valor máximo cuando
+el péndulo llegó a los puntos más altos de su trayectoria, mientras
+que la energía cinética fue máxima al pasar por el punto más bajo. Lo
+anterior es coherente con las leyes de conservación de energía.
+
+En relación con la aceleración, se observó que esta era máxima en los
+extremos del movimiento, donde la fuerza restauradora es mayor. Sin
+embargo, no mostró cambios significativos al variar la longitud, lo
+cual indica una limitación del modelo simplificado utilizado.
+
+Finalmente, las hipótesis planteadas al inicio del experimento fueron
+en su mayoría confirmadas por los resultados obtenidos, lo cual
+sugiere que el sistema del péndulo se comporta de acuerdo a las
+expectativas teóricas derivadas del movimiento armónico simple.
 
 \renewcommand{\refname}{Bibliografía}
 \begin{thebibliography}{1}
